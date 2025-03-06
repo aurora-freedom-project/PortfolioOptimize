@@ -2200,7 +2200,7 @@ if __name__ == "__main__":
         "start_date": "2015-01-02",
         "end_date": "2025-01-02",
         "risk_free_rate": 0.0383,
-        "optimization_method": "OptimizationMethod.BLACK_LITTERMAN",
+        "optimization_method": OptimizationMethod.BLACK_LITTERMAN,
         "investor_views": {
             "CSL.AX": {
                 "view_type": "will return",
@@ -2229,20 +2229,20 @@ if __name__ == "__main__":
     result = process_portfolio(portfolio_data)
     
     # Add index
-    result_with_mean = {
-        "portfolio_index": 1,
-        **result_mv
-    }
-
-    result_with_black = {
-        "portfolio_index": 2,
-        **result,
+    result_with_index = {
+        "mean_variance": {
+            "portfolio_index": 1,
+            **result_mv
+        },
+        "black_litterman": {
+            "portfolio_index": 2,
+            **result,
+        }
     }
 
     # Print or save results
-    print(json.dumps([result_with_mean], indent=2, default=convert_to_serializable, ensure_ascii=False))
-    print(json.dumps([result_with_black], indent=2, default=convert_to_serializable, ensure_ascii=False))
+    print(json.dumps([result_with_index], indent=2, default=convert_to_serializable, ensure_ascii=False))
     
     # Save to file
-    # with open('portfolio_optimization_result.json', 'w', encoding='utf-8') as f:
-    #     json.dump([result_with_index], f, indent=2, default=convert_to_serializable, ensure_ascii=False)
+    with open('portfolio_optimization_result.json', 'w', encoding='utf-8') as f:
+        json.dump([result_with_index], f, indent=2, default=convert_to_serializable, ensure_ascii=False)
