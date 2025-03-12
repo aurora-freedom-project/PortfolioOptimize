@@ -481,7 +481,7 @@ def parse_portfolio_data(portfolio: Dict) -> Dict:
     return parsed_data
 
 
-def fetch_stock_data(tickers: List[str], start_date: str, end_date: str) -> Tuple[pd.DataFrame, Dict]:
+def fetch_stock_data(tickers: List[str], start_date: str, end_date: str, exchanges: Dict[str, str] = None) -> Tuple[pd.DataFrame, Dict, List[str]]:
     """
     Fetch stock price data and exchange information.
     
@@ -489,9 +489,10 @@ def fetch_stock_data(tickers: List[str], start_date: str, end_date: str) -> Tupl
         tickers: List of stock tickers
         start_date: Start date (YYYY-MM-DD)
         end_date: End date (YYYY-MM-DD)
+        exchanges: Dictionary mapping tickers to their respective exchanges (optional)
         
     Returns:
-        Tuple of price data and ticker information
+        Tuple of (price data, ticker information, missing tickers)
     """
     try:
         # Convert date formats to YYYY-MM-DD
@@ -513,44 +514,48 @@ def fetch_stock_data(tickers: List[str], start_date: str, end_date: str) -> Tupl
         # Get closing price data
         close_data = data['Close']
         
-        # Check for missing tickers
+        # Check for missing tickers or tickers with insufficient data
         missing_tickers = []
         for ticker in tickers:
             if ticker not in close_data.columns:
                 missing_tickers.append(ticker)
             elif close_data[ticker].isna().all():
                 missing_tickers.append(ticker)
+            # Check for significant missing data (more than 10% of values are NaN)
+            elif close_data[ticker].isna().sum() > len(close_data) * 0.1:
+                missing_tickers.append(ticker)
+                print(f"Warning: Ticker {ticker} has more than 10% missing data points")
         
         if missing_tickers:
-            print(f"Warning: No data available for tickers: {missing_tickers}")
+            print(f"Warning: Insufficient or no data available for tickers: {missing_tickers}")
         
-        # Get exchange information for each ticker
+        # Get or use provided exchange information for each ticker
         ticker_info = {}
         for ticker in tickers:
-            try:
-                if ticker in close_data.columns:
+            if exchanges and ticker in exchanges:
+                # Use provided exchange information
+                ticker_info[ticker] = exchanges.get(ticker, 'N/A')
+            elif ticker in close_data.columns and ticker not in missing_tickers:
+                # Fetch exchange information if not provided
+                try:
                     info = yf.Ticker(ticker).info
                     exchange = info.get('exchange', 'N/A')
                     ticker_info[ticker] = exchange
-                else:
+                except Exception as e:
+                    print(f"Unable to get information for {ticker}: {e}")
                     ticker_info[ticker] = 'N/A'
-            except Exception as e:
-                print(f"Unable to get information for {ticker}: {e}")
+            else:
                 ticker_info[ticker] = 'N/A'
         
-        # Handle missing data if any
-        if close_data.isna().any().any():
-            close_data = close_data.ffill().bfill()
-            print("Filled missing values in data")
-        
-        return close_data, ticker_info
+        # Return data, ticker info, and list of missing tickers without filling missing values
+        return close_data, ticker_info, missing_tickers
         
     except Exception as e:
         print(f"Error loading stock data: {e}")
-        # Return empty DataFrame and default information
+        # Return empty DataFrame, default information, and all tickers as missing
         empty_df = pd.DataFrame(columns=tickers)
-        ticker_info = {ticker: 'N/A' for ticker in tickers}
-        return empty_df, ticker_info
+        ticker_info = {ticker: exchanges.get(ticker, 'N/A') if exchanges else 'N/A' for ticker in tickers}
+        return empty_df, ticker_info, tickers
 
 
 def calculate_returns_and_covariance(price_data: pd.DataFrame) -> Tuple[pd.Series, pd.DataFrame]:
@@ -1171,6 +1176,59 @@ def generate_frontier_portfolios(
     return frontier_portfolios
 
 
+def create_asset_metrics_table(
+    tickers: List[str], 
+    weights: Dict[str, float], 
+    constraints: Dict[str, Tuple[float, float]], 
+    mu: pd.Series, 
+    S: pd.DataFrame,
+    risk_free_rate: float = 0.02
+) -> List[Dict[str, Any]]:
+    """
+    Create a table of asset metrics for efficient frontier visualization.
+    
+    Args:
+        tickers: List of stock tickers
+        weights: Asset weights in the portfolio
+        constraints: Weight constraints (min, max)
+        mu: Expected returns
+        S: Covariance matrix
+        risk_free_rate: Risk-free rate
+        
+    Returns:
+        List of dictionaries with asset metrics for table presentation
+    """
+    assets_metrics = []
+    
+    for ticker in tickers:
+        # Get expected return (annualized)
+        expected_return = float(mu.get(ticker, 0))
+        
+        # Get standard deviation (volatility)
+        std_dev = float(np.sqrt(S.loc[ticker, ticker] * 252)) if ticker in S.index else 0
+        
+        # Calculate individual asset Sharpe ratio
+        sharpe = (expected_return - risk_free_rate) / std_dev if std_dev > 0 else 0
+        
+        # Format asset data for table display
+        asset_data = {
+            "ticker": ticker,
+            "expected_return": expected_return,
+            "standard_deviation": std_dev,
+            "sharpe_ratio": sharpe,
+            "weight": weights.get(ticker, 0),
+            "min_weight": constraints.get(ticker, (0, 1))[0],
+            "max_weight": constraints.get(ticker, (0, 1))[1]
+        }
+        
+        assets_metrics.append(asset_data)
+    
+    # Sort by expected return (descending)
+    assets_metrics.sort(key=lambda x: x["expected_return"], reverse=True)
+    
+    return assets_metrics
+
+
 # Black-Litterman Model Functions
 def prepare_black_litterman_data(
     price_data: pd.DataFrame,
@@ -1460,20 +1518,16 @@ def analyze_portfolio(portfolio_data: Dict, analysis_type: str = OptimizationMet
     investor_views = portfolio_data.get("investor_views", None)
     
     try:
-        # Fetch stock data
-        stock_data, ticker_info = fetch_stock_data(tickers, start_date, end_date)
+        # Fetch stock data with the updated function that returns missing tickers
+        stock_data, ticker_info, missing_tickers = fetch_stock_data(tickers, start_date, end_date)
         
         # Check for missing data
-        missing_data_tickers = []
-        for ticker in tickers:
-            if ticker not in stock_data.columns or stock_data[ticker].isna().sum() > len(stock_data) * 0.1:
-                missing_data_tickers.append(ticker)
-        
-        if missing_data_tickers:
+        if missing_tickers:
             return {
                 "error": True,
                 "message": "Insufficient data for optimization",
-                "problematic_tickers": missing_data_tickers
+                "problematic_tickers": missing_tickers,
+                "recommendation": "Please remove these tickers from your portfolio or adjust the date range to match their available data."
             }
         
         # Branch based on analysis type
@@ -1599,7 +1653,14 @@ def analyze_portfolio_mean_variance(
             "metrics": provided_metrics
         },
         "efficient_frontier_portfolios": frontier_portfolios,
-        "efficient_frontier_assets": create_weight_dict(tickers, optimal_weights),
+        "efficient_frontier_assets": create_asset_metrics_table(
+            tickers, 
+            optimal_weights, 
+            constraints, 
+            mu, 
+            S, 
+            risk_free_rate
+        ),
         "asset_correlations": correlation_matrix,
         "optimal_portfolio": {
             "weights": create_weight_dict(tickers, optimal_weights),
@@ -1805,7 +1866,16 @@ def optimize_with_ticker_filtering(portfolio_data: Dict) -> Dict[str, Any]:
     optimization_method = portfolio_data.get("optimization_method", OptimizationMethod.MEAN_VARIANCE)
     
     # Fetch stock data
-    stock_data, ticker_info = fetch_stock_data(tickers, start_date, end_date)
+    stock_data, ticker_info, missing_tickers = fetch_stock_data(tickers, start_date, end_date)
+    
+    # Handle missing tickers first
+    if missing_tickers:
+        return {
+            "status": "error",
+            "message": "Insufficient data for optimization",
+            "problematic_tickers": missing_tickers,
+            "recommendation": "Please remove these tickers from your portfolio or adjust the date range to match their available data."
+        }
     
     # Analyze and identify weak tickers
     weak_tickers, ticker_analysis = filter_weak_tickers(tickers, stock_data)
