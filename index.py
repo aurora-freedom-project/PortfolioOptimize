@@ -1266,8 +1266,8 @@ def prepare_black_litterman_data(
     try:
         # Sử dụng hàm đúng để tính lợi nhuận ẩn định thị trường
         market_implied_returns = black_litterman.market_implied_prior_returns(
-            market_prices=benchmark_weights_series,  # Sử dụng trọng số chuẩn làm giá thị trường
-            delta=market_risk_aversion,
+            market_caps=benchmark_weights_series,    # Sửa thành tên tham số đúng
+            risk_aversion=market_risk_aversion,      # Sửa thành tên tham số đúng
             cov_matrix=cov_matrix,
             risk_free_rate=risk_free_rate
         )
@@ -2191,7 +2191,7 @@ if __name__ == "__main__":
     # }
 
     portfolio_data_mv = {
-        "tickers": ["BHP.AX", "CBA.AX", "CSL.AX", "WBC.AX", "NAB.AX", "ANZ.AX", "FMG.AX", "RIO.AX", "MQG.AX", "WES.AX", "WOW.AX", "TLS.AX", "GMG.AX", "XRO.AX", "ALL.AX", "COL.AX", "MIN.AX", "RMD.AX", "SHL.AX", "REA.AX"],
+        "tickers": ["BHP.AX", "CBA.AX", "CSL.AX", "WBC.AX", "NAB.AX", "ANZ.AX", "FMG.AX", "RIO.AX", "MQG.AX", "WES.AX", "WOW.AX", "TLS.AX", "GMG.AX", "XRO.AX", "ALL.AX", "MIN.AX", "RMD.AX", "SHL.AX", "REA.AX"],
         "allocations": {
             "BHP.AX": 0.11,
             "CBA.AX": 0.095,
@@ -2208,11 +2208,11 @@ if __name__ == "__main__":
             "GMG.AX": 0.025,
             "XRO.AX": 0.025,
             "ALL.AX": 0.02,
-            "COL.AX": 0.02,
+            # "COL.AX": 0.02,
             "MIN.AX": 0.015,
             "RMD.AX": 0.015,
             "SHL.AX": 0.01,
-            "REA.AX": 0.01
+            "REA.AX": 0.03
         },
         "constraints": {
             "BHP.AX": [0.08, 0.15],
@@ -2230,11 +2230,11 @@ if __name__ == "__main__":
             "GMG.AX": [0.01, 0.04],
             "XRO.AX": [0.01, 0.04],
             "ALL.AX": [0.01, 0.03],
-            "COL.AX": [0.01, 0.03],
+            # "COL.AX": [0.01, 0.03],
             "MIN.AX": [0.005, 0.02],
             "RMD.AX": [0.005, 0.02],
             "SHL.AX": [0.005, 0.02],
-            "REA.AX": [0.005, 0.02]
+            "REA.AX": [0.005, 0.03]
         },
         "start_date": "2015-01-02",
         "end_date": "2025-01-02",
@@ -2244,7 +2244,7 @@ if __name__ == "__main__":
 
     # Example portfolio data with Black-Litterman investor views
     portfolio_data = {
-        "tickers": ["BHP.AX", "CBA.AX", "CSL.AX", "WBC.AX", "NAB.AX", "ANZ.AX", "FMG.AX", "RIO.AX", "MQG.AX", "WES.AX", "WOW.AX", "TLS.AX", "GMG.AX", "XRO.AX", "ALL.AX", "COL.AX", "MIN.AX", "RMD.AX", "SHL.AX", "REA.AX"],
+        "tickers": ["BHP.AX", "CBA.AX", "CSL.AX", "WBC.AX", "NAB.AX", "ANZ.AX", "FMG.AX", "RIO.AX", "MQG.AX", "WES.AX", "WOW.AX", "TLS.AX", "GMG.AX", "XRO.AX", "ALL.AX", "MIN.AX", "RMD.AX", "SHL.AX", "REA.AX"],
         "allocations": {
             "BHP.AX": 0.11,
             "CBA.AX": 0.095,
@@ -2261,11 +2261,11 @@ if __name__ == "__main__":
             "GMG.AX": 0.025,
             "XRO.AX": 0.025,
             "ALL.AX": 0.02,
-            "COL.AX": 0.02,
+            # "COL.AX": 0.02,
             "MIN.AX": 0.015,
             "RMD.AX": 0.015,
             "SHL.AX": 0.01,
-            "REA.AX": 0.01
+            "REA.AX": 0.03
         },
         "start_date": "2015-01-02",
         "end_date": "2025-01-02",
