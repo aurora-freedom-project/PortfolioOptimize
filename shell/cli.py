@@ -19,13 +19,13 @@ def parse_args():
                         help='Optimization method to use')
     
     # Date range
-    parser.add_argument('--start-date', type=str, required=True,
+    parser.add_argument('--start-date', type=str, 
                         help='Start date (YYYY-MM-DD)')
-    parser.add_argument('--end-date', type=str, required=True,
+    parser.add_argument('--end-date', type=str,
                         help='End date (YYYY-MM-DD)')
     
     # Tickers
-    parser.add_argument('--tickers', type=str, required=True,
+    parser.add_argument('--tickers', type=str,
                         help='Comma-separated list of stock tickers')
     
     # Allocations (optional)
@@ -47,6 +47,14 @@ def parse_args():
     # Output file (optional)
     parser.add_argument('--output', type=str, default='',
                         help='Output file for results (JSON format)')
+    
+    # Show charts flag
+    parser.add_argument('--show-charts', action='store_true',
+                        help='Display interactive charts for portfolio analysis')
+    
+    # Charts from JSON file
+    parser.add_argument('--charts-from-json', type=str, default='',
+                        help='Generate charts from existing JSON results file')
     
     return parser.parse_args()
 

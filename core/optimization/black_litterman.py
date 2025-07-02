@@ -157,7 +157,7 @@ def run_black_litterman_optimization(
     # Generate efficient frontier
     frontier_portfolios = generate_efficient_frontier(
         posterior_returns, cov_matrix, tickers, constraints, 
-        optimal_metrics, optimal_weights, 20, price_data, risk_free_rate
+        optimal_metrics, optimal_weights, 100, price_data, risk_free_rate
     )
     
     # Create correlation matrix

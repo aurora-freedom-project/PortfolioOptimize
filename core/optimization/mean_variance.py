@@ -111,51 +111,82 @@ def generate_efficient_frontier(
     constraints: Dict[str, Tuple[float, float]],
     optimal_metrics: Dict[str, float],
     optimal_weights: Dict[str, float],
-    num_portfolios: int = 20,
+    num_portfolios: int = 100,
     price_data: pd.DataFrame = None,
     risk_free_rate: float = 0.02
 ) -> List[Dict[str, Any]]:
-    """Generate portfolios along the efficient frontier."""
+    """Generate portfolios along the efficient frontier to create smooth envelope."""
     frontier_portfolios = []
     
     # Get optimal parameters
     optimal_return = optimal_metrics["expected_return"]
-    optimal_sharpe = optimal_metrics["sharpe_ratio"]
+    optimal_volatility = optimal_metrics["standard_deviation"]
     
-    # Determine return range for frontier
-    mean_return = mu.mean()
-    min_ret = max(-0.1, mean_return - 0.15)
-    max_ret = min(0.3, mean_return + 0.15)
+    # Find minimum volatility portfolio to get proper range
+    try:
+        ef_min = efficient_frontier.EfficientFrontier(mu, S)
+        ef_min = add_constraints_to_ef(ef_min, tickers, constraints)
+        ef_min.min_volatility()
+        min_vol_weights = ef_min.clean_weights()
+        min_vol_array = weights_to_array(tickers, min_vol_weights)
+        min_vol_metrics = calculate_portfolio_metrics(min_vol_array, mu, S, price_data, risk_free_rate)
+        min_vol_return = min_vol_metrics["expected_return"]
+        min_volatility = min_vol_metrics["standard_deviation"]
+    except:
+        # Fallback if min volatility fails
+        min_vol_return = mu.min()
+        min_volatility = optimal_volatility * 0.8
     
-    # Create return targets
-    target_returns = np.linspace(min_ret, max_ret, num_portfolios)
+    # Determine return range for comprehensive frontier
+    return_range_lower = min_vol_return
+    return_range_upper = min(mu.max() * 1.2, optimal_return * 2.0)
     
-    # Create efficient frontier object
-    ef = efficient_frontier.EfficientFrontier(mu, S)
-    ef = add_constraints_to_ef(ef, tickers, constraints)
+    # Create comprehensive return targets with denser sampling near optimal
+    # Generate more points near the optimal portfolio for smooth curves
+    dense_range = np.linspace(optimal_return * 0.7, optimal_return * 1.3, num_portfolios // 3)
+    sparse_lower = np.linspace(return_range_lower, optimal_return * 0.7, num_portfolios // 3)
+    sparse_upper = np.linspace(optimal_return * 1.3, return_range_upper, num_portfolios // 3)
+    target_returns = np.concatenate([sparse_lower, dense_range, sparse_upper])
+    target_returns = np.unique(target_returns)  # Remove duplicates
     
-    # Add optimal portfolio
+    # Add minimum volatility portfolio
+    if 'min_vol_weights' in locals():
+        min_vol_portfolio = {
+            "weights": min_vol_weights,
+            "expected_return": min_vol_metrics["expected_return"],
+            "standard_deviation": min_vol_metrics["standard_deviation"],
+            "sharpe_ratio": min_vol_metrics["sharpe_ratio"],
+            "is_max_sharpe": False,
+            "is_min_volatility": True
+        }
+        if "sortino_ratio" in min_vol_metrics:
+            min_vol_portfolio["sortino_ratio"] = min_vol_metrics["sortino_ratio"]
+        frontier_portfolios.append(min_vol_portfolio)
+    
+    # Add optimal portfolio (max Sharpe)
     optimal_portfolio = {
         "weights": optimal_weights,
         "expected_return": optimal_metrics["expected_return"],
         "standard_deviation": optimal_metrics["standard_deviation"],
         "sharpe_ratio": optimal_metrics["sharpe_ratio"],
-        "is_max_sharpe": True
+        "is_max_sharpe": True,
+        "is_min_volatility": False
     }
-    
     if "sortino_ratio" in optimal_metrics:
         optimal_portfolio["sortino_ratio"] = optimal_metrics["sortino_ratio"]
-        
     frontier_portfolios.append(optimal_portfolio)
     
     # Generate portfolios for each target return
+    successful_portfolios = 0
     for target_return in target_returns:
-        # Skip if too close to optimal return
-        if abs(target_return - optimal_return) < 0.0001:
+        # Skip if too close to already existing portfolios
+        too_close = any(abs(target_return - p["expected_return"]) < 0.0005 
+                       for p in frontier_portfolios)
+        if too_close:
             continue
             
         try:
-            # Reset efficient frontier for each target
+            # Create fresh efficient frontier for each target
             ef = efficient_frontier.EfficientFrontier(mu, S)
             ef = add_constraints_to_ef(ef, tickers, constraints)
             
@@ -169,28 +200,42 @@ def generate_efficient_frontier(
                 weights_array, mu, S, price_data, risk_free_rate
             )
             
-            # Add to frontier
-            portfolio = {
-                "weights": weights,
-                "expected_return": metrics["expected_return"],
-                "standard_deviation": metrics["standard_deviation"],
-                "sharpe_ratio": metrics["sharpe_ratio"],
-                "is_max_sharpe": False
-            }
-            
-            if "sortino_ratio" in metrics:
-                portfolio["sortino_ratio"] = metrics["sortino_ratio"]
+            # Validate portfolio makes sense
+            if (metrics["standard_deviation"] > 0 and 
+                metrics["expected_return"] > -0.5 and 
+                metrics["expected_return"] < 1.0):
                 
-            frontier_portfolios.append(portfolio)
-            
+                portfolio = {
+                    "weights": weights,
+                    "expected_return": metrics["expected_return"],
+                    "standard_deviation": metrics["standard_deviation"],
+                    "sharpe_ratio": metrics["sharpe_ratio"],
+                    "is_max_sharpe": False,
+                    "is_min_volatility": False
+                }
+                
+                if "sortino_ratio" in metrics:
+                    portfolio["sortino_ratio"] = metrics["sortino_ratio"]
+                    
+                frontier_portfolios.append(portfolio)
+                successful_portfolios += 1
+                
         except Exception as e:
-            print(f"Could not generate portfolio with return {target_return}: {e}")
+            # Skip problematic portfolios without printing errors
             continue
     
-    # Sort by expected return
-    frontier_portfolios.sort(key=lambda x: x["expected_return"])
+    # Sort by volatility to create proper efficient frontier ordering
+    frontier_portfolios.sort(key=lambda x: x["standard_deviation"])
     
-    return frontier_portfolios
+    # Remove any duplicate portfolios (same volatility)
+    unique_portfolios = []
+    for portfolio in frontier_portfolios:
+        if not any(abs(portfolio["standard_deviation"] - p["standard_deviation"]) < 1e-6 
+                  for p in unique_portfolios):
+            unique_portfolios.append(portfolio)
+    
+    print(f"Generated efficient frontier with {len(unique_portfolios)} portfolios")
+    return unique_portfolios
 
 def run_mean_variance_optimization(
     price_data: pd.DataFrame,
@@ -218,7 +263,7 @@ def run_mean_variance_optimization(
     # Generate efficient frontier
     frontier_portfolios = generate_efficient_frontier(
         mu, S, tickers, constraints, optimal_metrics, 
-        optimal_weights, 20, price_data, risk_free_rate
+        optimal_weights, 100, price_data, risk_free_rate
     )
     
     # Create correlation matrix

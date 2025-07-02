@@ -48,8 +48,22 @@ def run_hierarchical_risk_parity(
     # Create correlation matrix
     correlation_matrix = price_data.corr().to_dict()
     
-    # Get cluster information
-    clusters = hrp.clusters
+    # Get cluster information - convert to list for JSON serialization
+    clusters = hrp.clusters.tolist() if hasattr(hrp.clusters, 'tolist') else hrp.clusters
+    
+    # Generate efficient frontier using mean-variance optimization
+    # This provides additional analysis context for HRP results
+    try:
+        from core.optimization.mean_variance import generate_efficient_frontier
+        # Use empty constraints for HRP since it doesn't support them
+        empty_constraints = {ticker: (0, 1) for ticker in tickers}
+        frontier_portfolios = generate_efficient_frontier(
+            mu, S, tickers, empty_constraints, optimal_metrics,
+            optimal_weights, 100, price_data, risk_free_rate
+        )
+    except Exception as e:
+        print(f"Could not generate efficient frontier for HRP: {e}")
+        frontier_portfolios = []
     
     return {
         "provided_portfolio": {
@@ -60,6 +74,7 @@ def run_hierarchical_risk_parity(
             "weights": optimal_weights,
             "metrics": optimal_metrics
         },
+        "efficient_frontier": frontier_portfolios,
         "clusters": clusters,
         "correlation_matrix": correlation_matrix,
         "method": "HIERARCHICAL_RISK_PARITY"

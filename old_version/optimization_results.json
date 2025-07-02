@@ -1,0 +1,1595 @@
+{
+  "status": "success",
+  "charts": {
+    "mv_comparison": "charts/mv_comparison.html",
+    "efficient_frontier": "charts/efficient_frontier.html",
+    "bl_comparison": "charts/bl_comparison.html"
+  },
+  "mean_variance": {
+    "optimal_weights": {
+      "ANZ.AX": 0.0,
+      "CBA.AX": 0.87293,
+      "MQG.AX": 0.0,
+      "NAB.AX": 0.0,
+      "RIO.AX": 0.12707,
+      "WOW.AX": 0.0
+    },
+    "efficient_frontier": [
+      {
+        "expected_return": 0.04650849890250731,
+        "standard_deviation": 0.12827227390655452,
+        "sharpe_ratio": 0.06399277608883072,
+        "weights": {
+          "ANZ.AX": 0.19869,
+          "CBA.AX": 0.0861,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.10756,
+          "RIO.AX": 0.20076,
+          "WOW.AX": 0.40689
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.08087261982716636,
+        "standard_deviation": 0.13086363300317538,
+        "sharpe_ratio": 0.3253204794194682,
+        "weights": {
+          "ANZ.AX": 0.1102,
+          "CBA.AX": 0.25172,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.12443,
+          "RIO.AX": 0.21703,
+          "WOW.AX": 0.29662
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.09534923405035878,
+        "standard_deviation": 0.13345499210605047,
+        "sharpe_ratio": 0.4274792059110416,
+        "weights": {
+          "ANZ.AX": 0.07293,
+          "CBA.AX": 0.32149,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.13154,
+          "RIO.AX": 0.22388,
+          "WOW.AX": 0.25016
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.10662141337075923,
+        "standard_deviation": 0.13604635114368996,
+        "sharpe_ratio": 0.502192177860024,
+        "weights": {
+          "ANZ.AX": 0.0439,
+          "CBA.AX": 0.37582,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.13708,
+          "RIO.AX": 0.22922,
+          "WOW.AX": 0.21398
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.11626039527226452,
+        "standard_deviation": 0.13863771043166342,
+        "sharpe_ratio": 0.5623318145512245,
+        "weights": {
+          "ANZ.AX": 0.0191,
+          "CBA.AX": 0.42227,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.1418,
+          "RIO.AX": 0.23378,
+          "WOW.AX": 0.18304
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1248694171325698,
+        "standard_deviation": 0.14122906942840446,
+        "sharpe_ratio": 0.6129716600338844,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.46382,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.14414,
+          "RIO.AX": 0.23764,
+          "WOW.AX": 0.1544
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.13267156929494003,
+        "standard_deviation": 0.14382042865039366,
+        "sharpe_ratio": 0.6561763873221618,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.5018,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.13561,
+          "RIO.AX": 0.23987,
+          "WOW.AX": 0.12272
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.13984567580946677,
+        "standard_deviation": 0.1464117877621048,
+        "sharpe_ratio": 0.6935621602712883,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.53673,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.12777,
+          "RIO.AX": 0.24192,
+          "WOW.AX": 0.09358
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.14654626205400456,
+        "standard_deviation": 0.14900314649489896,
+        "sharpe_ratio": 0.7264696390670536,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.56934,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.12045,
+          "RIO.AX": 0.24383,
+          "WOW.AX": 0.06637
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.15287477326416782,
+        "standard_deviation": 0.15159450554225662,
+        "sharpe_ratio": 0.7557976646602825,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.60015,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.11353,
+          "RIO.AX": 0.24564,
+          "WOW.AX": 0.04067
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.15890194063458266,
+        "standard_deviation": 0.15418586460526268,
+        "sharpe_ratio": 0.7821854548297307,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.6295,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.10694,
+          "RIO.AX": 0.24737,
+          "WOW.AX": 0.0162
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.16460680609893577,
+        "standard_deviation": 0.15677722368888716,
+        "sharpe_ratio": 0.8056451257842294,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.67818,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.07876,
+          "RIO.AX": 0.24306,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1692860791477252,
+        "standard_deviation": 0.1593685827854109,
+        "sharpe_ratio": 0.8219065317541122,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.75793,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.01384,
+          "RIO.AX": 0.22823,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.17298939569027316,
+        "standard_deviation": 0.16195994173263173,
+        "sharpe_ratio": 0.8316216605747019,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.80588,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.19412,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.17582486667830466,
+        "standard_deviation": 0.16455130081419553,
+        "sharpe_ratio": 0.8357567882954143,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.83832,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.16168,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.17885114729832413,
+        "standard_deviation": 0.16788412239413117,
+        "sharpe_ratio": 0.8371914228336668,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.87293,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.12707,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": true
+      },
+      {
+        "expected_return": 0.18034419460551823,
+        "standard_deviation": 0.16973401887434544,
+        "sharpe_ratio": 0.8368634381459732,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.89001,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.10999,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.182279917554573,
+        "standard_deviation": 0.1723253779315058,
+        "sharpe_ratio": 0.8355119790411877,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.91215,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.08785,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18407590990431144,
+        "standard_deviation": 0.1749167369899795,
+        "sharpe_ratio": 0.8334017225159107,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.9327,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0673,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18576320812236008,
+        "standard_deviation": 0.1775080960408523,
+        "sharpe_ratio": 0.830740745979397,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.952,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.048,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18736308630569318,
+        "standard_deviation": 0.18009945504937658,
+        "sharpe_ratio": 0.8276709458383736,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.9703,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0297,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18889086124972088,
+        "standard_deviation": 0.18269081390504285,
+        "sharpe_ratio": 0.8242935593247367,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 0.98777,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.01223,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987942397055,
+        "standard_deviation": 0.18456928308141393,
+        "sharpe_ratio": 0.8216962047637852,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987941882095,
+        "standard_deviation": 0.18456928308298945,
+        "sharpe_ratio": 0.8216962047288705,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598781120148,
+        "standard_deviation": 0.1845692819872782,
+        "sharpe_ratio": 0.8216962025266386,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598790211659,
+        "standard_deviation": 0.1845692828328413,
+        "sharpe_ratio": 0.8216962036880188,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792897353,
+        "standard_deviation": 0.18456928302336584,
+        "sharpe_ratio": 0.8216962042949242,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598794009255,
+        "standard_deviation": 0.1845692830849259,
+        "sharpe_ratio": 0.8216962046232916,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987943025083,
+        "standard_deviation": 0.18456928309881934,
+        "sharpe_ratio": 0.8216962047203237,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987943754247,
+        "standard_deviation": 0.1845692831043315,
+        "sharpe_ratio": 0.82169620473529,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987822507993,
+        "standard_deviation": 0.1845692821547688,
+        "sharpe_ratio": 0.821696202393565,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987874985218,
+        "standard_deviation": 0.18456928262086003,
+        "sharpe_ratio": 0.8216962031617691,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987907467868,
+        "standard_deviation": 0.1845692828712892,
+        "sharpe_ratio": 0.8216962038067832,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987926896626,
+        "standard_deviation": 0.18456928300884104,
+        "sharpe_ratio": 0.821696204247061,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987930683586,
+        "standard_deviation": 0.18456928303323927,
+        "sharpe_ratio": 0.8216962043436191,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987931623048,
+        "standard_deviation": 0.18456928303782344,
+        "sharpe_ratio": 0.8216962043741108,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987931938535,
+        "standard_deviation": 0.1845692830388709,
+        "sharpe_ratio": 0.8216962043865407,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987932043815,
+        "standard_deviation": 0.18456928303905504,
+        "sharpe_ratio": 0.821696204391425,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987932065886,
+        "standard_deviation": 0.18456928303906905,
+        "sharpe_ratio": 0.8216962043925584,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987932053174,
+        "standard_deviation": 0.18456928303911502,
+        "sharpe_ratio": 0.8216962043916651,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987932026343,
+        "standard_deviation": 0.18456928303924472,
+        "sharpe_ratio": 0.821696204389634,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987931544453,
+        "standard_deviation": 0.18456928303621326,
+        "sharpe_ratio": 0.8216962043770211,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987931061223,
+        "standard_deviation": 0.1845692830331463,
+        "sharpe_ratio": 0.8216962043644935,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987930603883,
+        "standard_deviation": 0.18456928303023692,
+        "sharpe_ratio": 0.8216962043526672,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987930171285,
+        "standard_deviation": 0.1845692830274785,
+        "sharpe_ratio": 0.8216962043415094,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987929761876,
+        "standard_deviation": 0.18456928302486197,
+        "sharpe_ratio": 0.8216962043309762,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792937377,
+        "standard_deviation": 0.1845692830223761,
+        "sharpe_ratio": 0.8216962043210155,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792900506,
+        "standard_deviation": 0.18456928302000974,
+        "sharpe_ratio": 0.8216962043115736,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987928653996,
+        "standard_deviation": 0.18456928301775236,
+        "sharpe_ratio": 0.8216962043026028,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987928318633,
+        "standard_deviation": 0.1845692830155922,
+        "sharpe_ratio": 0.8216962042940498,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987927997268,
+        "standard_deviation": 0.18456928301351916,
+        "sharpe_ratio": 0.8216962042858672,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.189959879276883,
+        "standard_deviation": 0.1845692830115234,
+        "sharpe_ratio": 0.8216962042780123,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987927388155,
+        "standard_deviation": 0.1845692830095767,
+        "sharpe_ratio": 0.821696204270417,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792709746,
+        "standard_deviation": 0.18456928300768954,
+        "sharpe_ratio": 0.8216962042630687,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792681496,
+        "standard_deviation": 0.18456928300585457,
+        "sharpe_ratio": 0.8216962042559321,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792653944,
+        "standard_deviation": 0.18456928300406414,
+        "sharpe_ratio": 0.8216962042489753,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987926263824,
+        "standard_deviation": 0.18456928300228315,
+        "sharpe_ratio": 0.8216962042419712,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987925944877,
+        "standard_deviation": 0.18456928300030456,
+        "sharpe_ratio": 0.8216962042334992,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987925631078,
+        "standard_deviation": 0.18456928299835673,
+        "sharpe_ratio": 0.8216962042251692,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987925321314,
+        "standard_deviation": 0.1845692829964329,
+        "sharpe_ratio": 0.8216962042169509,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987925014668,
+        "standard_deviation": 0.18456928299452752,
+        "sharpe_ratio": 0.8216962042088195,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792471033,
+        "standard_deviation": 0.18456928299263567,
+        "sharpe_ratio": 0.8216962042007528,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987924407443,
+        "standard_deviation": 0.18456928299075215,
+        "sharpe_ratio": 0.8216962041927277,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987924105281,
+        "standard_deviation": 0.18456928298887254,
+        "sharpe_ratio": 0.8216962041847246,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792380317,
+        "standard_deviation": 0.18456928298699277,
+        "sharpe_ratio": 0.8216962041767247,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987923500512,
+        "standard_deviation": 0.18456928298510916,
+        "sharpe_ratio": 0.8216962041687125,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792319673,
+        "standard_deviation": 0.1845692829832182,
+        "sharpe_ratio": 0.821696204160672,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792289127,
+        "standard_deviation": 0.18456928298131658,
+        "sharpe_ratio": 0.8216962041525879,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987922583746,
+        "standard_deviation": 0.18456928297940187,
+        "sharpe_ratio": 0.8216962041444505,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987922273633,
+        "standard_deviation": 0.18456928297747094,
+        "sharpe_ratio": 0.821696204136245,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792196057,
+        "standard_deviation": 0.18456928297552153,
+        "sharpe_ratio": 0.8216962041279618,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987921644206,
+        "standard_deviation": 0.18456928297355152,
+        "sharpe_ratio": 0.8216962041195917,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792132422,
+        "standard_deviation": 0.18456928297155906,
+        "sharpe_ratio": 0.8216962041111251,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987921000296,
+        "standard_deviation": 0.18456928296954206,
+        "sharpe_ratio": 0.8216962041025544,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987920672203,
+        "standard_deviation": 0.1845692829674993,
+        "sharpe_ratio": 0.8216962040938726,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987920339683,
+        "standard_deviation": 0.18456928296542913,
+        "sharpe_ratio": 0.8216962040850729,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598792000255,
+        "standard_deviation": 0.18456928296333042,
+        "sharpe_ratio": 0.8216962040761504,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987919660626,
+        "standard_deviation": 0.18456928296120223,
+        "sharpe_ratio": 0.8216962040670995,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987919313745,
+        "standard_deviation": 0.18456928295904346,
+        "sharpe_ratio": 0.8216962040579162,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918961782,
+        "standard_deviation": 0.18456928295685346,
+        "sharpe_ratio": 0.8216962040485966,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918820126,
+        "standard_deviation": 0.18456928295597597,
+        "sharpe_ratio": 0.8216962040448282,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918747273,
+        "standard_deviation": 0.18456928295552666,
+        "sharpe_ratio": 0.8216962040428814,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598791867644,
+        "standard_deviation": 0.1845692829550889,
+        "sharpe_ratio": 0.8216962040409925,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918607463,
+        "standard_deviation": 0.18456928295466163,
+        "sharpe_ratio": 0.8216962040391574,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918540203,
+        "standard_deviation": 0.18456928295424396,
+        "sharpe_ratio": 0.8216962040373728,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918474533,
+        "standard_deviation": 0.1845692829538353,
+        "sharpe_ratio": 0.8216962040356341,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598791841031,
+        "standard_deviation": 0.18456928295343458,
+        "sharpe_ratio": 0.8216962040339384,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598791834743,
+        "standard_deviation": 0.18456928295304123,
+        "sharpe_ratio": 0.8216962040322827,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598791828578,
+        "standard_deviation": 0.18456928295265457,
+        "sharpe_ratio": 0.821696204030664,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918225257,
+        "standard_deviation": 0.184569282952274,
+        "sharpe_ratio": 0.8216962040290791,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918165758,
+        "standard_deviation": 0.1845692829518989,
+        "sharpe_ratio": 0.8216962040275254,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918107218,
+        "standard_deviation": 0.18456928295152886,
+        "sharpe_ratio": 0.8216962040260011,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987918049528,
+        "standard_deviation": 0.18456928295116315,
+        "sharpe_ratio": 0.8216962040245036,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917992616,
+        "standard_deviation": 0.1845692829508014,
+        "sharpe_ratio": 0.8216962040230305,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917936416,
+        "standard_deviation": 0.18456928295044328,
+        "sharpe_ratio": 0.82169620402158,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917880858,
+        "standard_deviation": 0.18456928295008831,
+        "sharpe_ratio": 0.8216962040201501,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917825877,
+        "standard_deviation": 0.184569282949736,
+        "sharpe_ratio": 0.8216962040187397,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.1899598791777141,
+        "standard_deviation": 0.18456928294938613,
+        "sharpe_ratio": 0.8216962040173462,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917717413,
+        "standard_deviation": 0.18456928294903843,
+        "sharpe_ratio": 0.8216962040159687,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.18995987917663823,
+        "standard_deviation": 0.1845692829486924,
+        "sharpe_ratio": 0.8216962040146056,
+        "weights": {
+          "ANZ.AX": 0.0,
+          "CBA.AX": 1.0,
+          "MQG.AX": 0.0,
+          "NAB.AX": 0.0,
+          "RIO.AX": 0.0,
+          "WOW.AX": 0.0
+        },
+        "is_optimal": false
+      }
+    ],
+    "expected_returns": {
+      "ANZ.AX": 0.0726730907182267,
+      "CBA.AX": 0.18995987945780524,
+      "MQG.AX": 0.05390311438896367,
+      "NAB.AX": 0.13786079635408677,
+      "RIO.AX": 0.10253502914522694,
+      "WOW.AX": -0.04841361942823674
+    },
+    "covariance_matrix": {
+      "ANZ.AX": {
+        "ANZ.AX": 0.033092218926667305,
+        "CBA.AX": 0.0233566145796586,
+        "MQG.AX": 0.02183404744689389,
+        "NAB.AX": 0.025455336014482726,
+        "RIO.AX": 0.007525635982629198,
+        "WOW.AX": 0.00889390621240369
+      },
+      "CBA.AX": {
+        "ANZ.AX": 0.0233566145796586,
+        "CBA.AX": 0.03406582027198988,
+        "MQG.AX": 0.022233627363513083,
+        "NAB.AX": 0.02735206697148461,
+        "RIO.AX": 0.005316371722967578,
+        "WOW.AX": 0.011970539765428395
+      },
+      "MQG.AX": {
+        "ANZ.AX": 0.02183404744689389,
+        "CBA.AX": 0.022233627363513083,
+        "MQG.AX": 0.05270171586264098,
+        "NAB.AX": 0.02316014178387309,
+        "RIO.AX": 0.014607080086880277,
+        "WOW.AX": 0.012628699575418368
+      },
+      "NAB.AX": {
+        "ANZ.AX": 0.025455336014482726,
+        "CBA.AX": 0.02735206697148461,
+        "MQG.AX": 0.02316014178387309,
+        "NAB.AX": 0.03498157634331236,
+        "RIO.AX": 0.0049210304752362365,
+        "WOW.AX": 0.010544534078911557
+      },
+      "RIO.AX": {
+        "ANZ.AX": 0.007525635982629198,
+        "CBA.AX": 0.005316371722967578,
+        "MQG.AX": 0.014607080086880277,
+        "NAB.AX": 0.0049210304752362365,
+        "RIO.AX": 0.06485108318930784,
+        "WOW.AX": 0.002340212014182779
+      },
+      "WOW.AX": {
+        "ANZ.AX": 0.00889390621240369,
+        "CBA.AX": 0.011970539765428395,
+        "MQG.AX": 0.012628699575418368,
+        "NAB.AX": 0.010544534078911557,
+        "RIO.AX": 0.002340212014182779,
+        "WOW.AX": 0.02961949375648279
+      }
+    },
+    "optimal_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.0,
+        "CBA.AX": 0.87293,
+        "MQG.AX": 0.0,
+        "NAB.AX": 0.0,
+        "RIO.AX": 0.12707,
+        "WOW.AX": 0.0
+      },
+      "metrics": {
+        "expected_return": 0.17885114729832413,
+        "standard_deviation": 0.16788412239413117,
+        "sharpe_ratio": 0.8371914228336668,
+        "risk_free_rate": 0.0383
+      }
+    },
+    "provided_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.15,
+        "CBA.AX": 0.25,
+        "MQG.AX": 0.15,
+        "NAB.AX": 0.15,
+        "RIO.AX": 0.2,
+        "WOW.AX": 0.1
+      },
+      "metrics": {
+        "expected_return": 0.10282116396986457,
+        "standard_deviation": 0.14207995800632178,
+        "sharpe_ratio": 0.4541186869367862,
+        "risk_free_rate": 0.0383
+      }
+    }
+  },
+  "black_litterman": {
+    "optimal_weights": {
+      "ANZ.AX": 0.0,
+      "CBA.AX": 0.31881,
+      "MQG.AX": 0.25759,
+      "NAB.AX": 0.2108,
+      "RIO.AX": 0.2128,
+      "WOW.AX": 0.0
+    },
+    "market_caps": {
+      "ANZ.AX": 85000000000.0,
+      "CBA.AX": 180000000000.0,
+      "MQG.AX": 85000000000.0,
+      "NAB.AX": 125000000000.0,
+      "RIO.AX": 160000000000.0,
+      "WOW.AX": 40000000000.0
+    },
+    "market_weights": {
+      "ANZ.AX": 0.1259259259259259,
+      "CBA.AX": 0.26666666666666666,
+      "MQG.AX": 0.1259259259259259,
+      "NAB.AX": 0.18518518518518517,
+      "RIO.AX": 0.23703703703703705,
+      "WOW.AX": 0.05925925925925926
+    },
+    "market_implied_returns": {
+      "ANZ.AX": 0.06140348533088706,
+      "CBA.AX": 0.06625381935268054,
+      "MQG.AX": 0.0725506696735062,
+      "NAB.AX": 0.06590384922083707,
+      "RIO.AX": 0.06254957441569407,
+      "WOW.AX": 0.030955026032551448
+    },
+    "posterior_returns": {
+      "ANZ.AX": 0.061434996755631716,
+      "CBA.AX": 0.06629920384373544,
+      "MQG.AX": 0.07258008509751332,
+      "NAB.AX": 0.06594105484256246,
+      "RIO.AX": 0.06255187693853108,
+      "WOW.AX": 0.030971294388318513
+    },
+    "views_applied": true,
+    "view_details": {
+      "CBA.AX": {
+        "expected_return": 0.1,
+        "confidence": 0.8
+      },
+      "RIO.AX": {
+        "expected_return": 0.06,
+        "confidence": 0.6
+      }
+    },
+    "optimal_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.0,
+        "CBA.AX": 0.31881,
+        "MQG.AX": 0.25759,
+        "NAB.AX": 0.2108,
+        "RIO.AX": 0.2128,
+        "WOW.AX": 0.0
+      },
+      "metrics": {
+        "expected_return": 0.06704416707102133,
+        "standard_deviation": 0.15983482804804638,
+        "sharpe_ratio": 0.17983669405507055,
+        "risk_free_rate": 0.0383
+      }
+    },
+    "provided_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.15,
+        "CBA.AX": 0.25,
+        "MQG.AX": 0.15,
+        "NAB.AX": 0.15,
+        "RIO.AX": 0.2,
+        "WOW.AX": 0.1
+      },
+      "metrics": {
+        "expected_return": 0.062175726291828035,
+        "standard_deviation": 0.1465089435350602,
+        "sharpe_ratio": 0.16296429225233253,
+        "risk_free_rate": 0.0383
+      }
+    }
+  }
+}

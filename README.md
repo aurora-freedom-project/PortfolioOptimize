@@ -1,137 +1,351 @@
-# Portfolio Optimizer CLI
+# Portfolio Optimization CLI with Advanced Visualization
 
-## 1. Overview
+## 📊 Overview
 
-This command-line tool performs advanced portfolio optimization using various financial models. It takes a set of stock tickers, historical price data, and optional user-defined constraints to calculate the optimal asset allocation for different objectives, such as maximizing the Sharpe ratio or applying sophisticated models like Black-Litterman and Hierarchical Risk Parity (HRP).
+This command-line tool performs advanced portfolio optimization using various financial models with comprehensive interactive visualization capabilities. It takes a set of stock tickers, historical price data, and optional user-defined constraints to calculate optimal asset allocation while generating professional charts for analysis.
 
-The tool is designed with a modular architecture, separating data processing, financial modeling, and command-line interaction into distinct components.
+The tool is designed with a modular architecture, separating data processing, financial modeling, command-line interaction, and visualization into distinct components.
 
-## 2. Features
+## ✨ Key Features
 
-- **Multiple Optimization Methods:**
-  - **Mean-Variance Optimization:** Classic Markowitz model to find the portfolio with the maximum Sharpe ratio.
-  - **Black-Litterman Model:** Incorporates investor's subjective views on asset performance to produce a more stable and intuitive allocation.
-  - **Hierarchical Risk Parity (HRP):** A modern approach that uses graph theory and machine learning to distribute risk based on asset correlations, avoiding the instability issues of quadratic optimizers.
-- **Flexible Inputs:**
-  - Define custom date ranges for analysis.
-  - Provide existing portfolio allocations to compare against the optimal one.
-  - Set min/max weight constraints for each asset.
-  - Input a custom risk-free rate.
-- **Detailed Output:**
-  - Comparison between the user's provided portfolio and the calculated optimal portfolio.
-  - Key performance metrics: Expected Return, Standard Deviation, Sharpe Ratio, and Sortino Ratio.
-  - Asset correlation matrix.
-  - A detailed breakdown of the efficient frontier, showing 100 different portfolios and their expected performance.
+### 🎯 **Multiple Optimization Methods**
+- **Mean-Variance Optimization:** Classic Markowitz model to find the portfolio with maximum Sharpe ratio
+- **Black-Litterman Model:** Incorporates investor's subjective views on asset performance for stable allocation
+- **Hierarchical Risk Parity (HRP):** Modern approach using graph theory and machine learning for risk distribution
 
-## 3. Project Structure
+### 📈 **Interactive Chart Generation**
+- **Efficient Frontier Plots:** Comprehensive envelope visualization with 100+ portfolios
+- **Portfolio Allocation Charts:** Side-by-side pie charts comparing current vs optimal weights
+- **Correlation Matrix Heatmaps:** Professional visualization of asset correlations
+- **Risk-Return Metrics:** Bar charts comparing key performance indicators
+- **Method-specific charts:** Specialized visualizations for each optimization method
 
-The project is organized into three main packages: `core`, `shell`, and the root directory for primary scripts.
+### 🔧 **Flexible Analysis Options**
+- Custom date ranges for historical analysis
+- Portfolio constraint settings (min/max weights per asset)
+- Investor views integration (Black-Litterman)
+- Multiple output formats (JSON, PNG charts)
+- Standalone chart generation from existing results
+
+## 🏗️ Project Structure
 
 ```
 portfolio_optimizer/
-├── core/
-│   ├── data.py             # Data loading and preprocessing
-│   ├── models.py           # Pydantic models for input validation
-│   ├── utils.py            # Financial calculation utilities
-│   └── optimization/
-│       ├── mean_variance.py  # Mean-Variance optimization logic
-│       ├── black_litterman.py# Black-Litterman model logic
-│       └── hrp.py            # Hierarchical Risk Parity logic
-├── shell/
-│   ├── app.py              # Main application workflow coordinator
-│   └── cli.py              # CLI argument parsing and output display
-├── main.py                 # Main entry point for the application
-├── requirements.txt        # Project dependencies
-└── merged_stock_prices.csv # Example data file
+├── core/                          # Core business logic
+│   ├── __init__.py               # Package exports
+│   ├── data.py                   # Data loading and preprocessing
+│   ├── models.py                 # Pydantic models for validation
+│   ├── utils.py                  # Financial calculation utilities
+│   └── optimization/             # Optimization algorithms
+│       ├── __init__.py          # Optimization exports
+│       ├── mean_variance.py     # Mean-Variance optimization
+│       ├── black_litterman.py   # Black-Litterman model
+│       └── hrp.py               # Hierarchical Risk Parity
+├── shell/                        # CLI interface
+│   ├── __init__.py              # Shell exports  
+│   ├── app.py                   # Application workflow coordinator
+│   ├── cli.py                   # Command line interface
+│   └── display/                 # Visualization components
+│       ├── __init__.py         # Display exports
+│       └── visualization.py    # Chart generation
+├── main.py                      # Main CLI entry point
+├── chart_generator.py           # Standalone chart generator
+├── requirements.txt             # Dependencies
+├── CHARTS_GUIDE.md             # Comprehensive visualization guide
+└── README.md                   # This file
 ```
 
-## 4. Installation
+## 🚀 Installation
 
-1.  **Clone the repository** (if applicable).
+1. **Clone or download the project**
 
-2.  **Set up a Python virtual environment:**
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate
-    ```
+2. **Set up Python virtual environment:**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
 
-3.  **Install the required dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 5. Usage
+## 📝 Usage
 
-The tool is run from the command line using `python main.py`.
+The tool comes with sample Australian stock data (`merged_stock_prices.csv`) containing ASX-listed companies from 2020-2025:
 
-### Basic Example (Mean-Variance)
+- **ANZ.AX** - Australia and New Zealand Banking Group (Major Bank)
+- **CBA.AX** - Commonwealth Bank of Australia (Major Bank) 
+- **MQG.AX** - Macquarie Group (Investment Bank)
+- **NAB.AX** - National Australia Bank (Major Bank)
+- **RIO.AX** - Rio Tinto (Mining/Resources)
+- **WOW.AX** - Woolworths Group (Retail/Consumer)
 
-This command runs a Mean-Variance optimization for 5 Australian stocks from 2018 to 2021.
+Here are diverse usage examples showcasing different sectors and analysis approaches:
+
+### 1. Basic Mean-Variance Optimization (Financial Sector Focus)
 
 ```bash
 python main.py \
   --data merged_stock_prices.csv \
   --method mean_variance \
-  --start-date 2018-01-01 \
-  --end-date 2021-01-01 \
-  --tickers ANZ.AX,CBA.AX,NAB.AX,RIO.AX,WOW.AX \
-  --risk-free-rate 0.02
+  --start-date 2022-01-01 \
+  --end-date 2024-12-31 \
+  --tickers "ANZ.AX,CBA.AX,MQG.AX,NAB.AX" \
+  --allocations "ANZ.AX:0.25,CBA.AX:0.25,MQG.AX:0.25,NAB.AX:0.25" \
+  --output financial_portfolio.json
 ```
 
-### Arguments
+### 2. Black-Litterman with Investor Views (Mixed Sector Portfolio)
 
-- `--data`: Path to the CSV file containing stock prices. The file must have a `date` column and columns for each stock ticker.
-- `--method`: The optimization model to use. Choices: `mean_variance`, `black_litterman`, `hrp`.
-- `--start-date`/`--end-date`: The date range for historical data analysis (format: `YYYY-MM-DD`).
-- `--tickers`: A comma-separated list of stock tickers to include in the portfolio.
-- `--allocations` (Optional): Your current portfolio weights. Format: `TICKER1:WEIGHT1,TICKER2:WEIGHT2`.
-- `--constraints` (Optional): Min/max weight limits for tickers. Format: `TICKER1:MIN:MAX,TICKER2:MIN:MAX`.
-- `--risk-free-rate` (Optional): The annual risk-free rate. Default is `0.02`.
-- `--views` (Optional, for Black-Litterman): Your subjective views on asset returns. Format: `TICKER1:RETURN:CONFIDENCE,...`.
-- `--output` (Optional): Path to a JSON file to save the full results.
+```bash
+python main.py \
+  --data merged_stock_prices.csv \
+  --method black_litterman \
+  --start-date 2023-01-01 \
+  --end-date 2024-12-31 \
+  --tickers "CBA.AX,RIO.AX,WOW.AX" \
+  --allocations "CBA.AX:0.4,RIO.AX:0.3,WOW.AX:0.3" \
+  --views "CBA.AX:0.12:0.8,RIO.AX:0.15:0.6,WOW.AX:0.08:0.7" \
+  --risk-free-rate 0.035 \
+  --output mixed_sector.json \
+  --show-charts
+```
 
-## 6. Core Components Deep Dive
+### 3. HRP Optimization with Constraints (Full Diversification)
 
-### a. Data Handling (`core/data.py`)
+```bash
+python main.py \
+  --data merged_stock_prices.csv \
+  --method hrp \
+  --start-date 2021-06-01 \
+  --end-date 2024-06-01 \
+  --tickers "ANZ.AX,CBA.AX,MQG.AX,NAB.AX,RIO.AX,WOW.AX" \
+  --allocations "ANZ.AX:0.16,CBA.AX:0.17,MQG.AX:0.17,NAB.AX:0.16,RIO.AX:0.17,WOW.AX:0.17" \
+  --constraints "RIO.AX:0.1:0.3,MQG.AX:0.05:0.25" \
+  --output diversified_hrp.json \
+  --show-charts
+```
 
-- **`load_stock_data`**: Reads the CSV file into a pandas DataFrame, converts the `date` column to datetime objects, and sets it as the index.
-- **`calculate_returns_and_covariance`**: Uses the `pypfopt` library to calculate the annualized expected returns (`mu`) and the sample covariance matrix (`S`) from the price data. It includes a check to ensure the covariance matrix is positive semi-definite, a requirement for many optimization algorithms.
+### 4. COVID Recovery Analysis (2020-2022)
 
-### b. Input Validation (`core/models.py`)
+```bash
+python main.py \
+  --data merged_stock_prices.csv \
+  --method mean_variance \
+  --start-date 2020-03-01 \
+  --end-date 2022-03-01 \
+  --tickers "ANZ.AX,CBA.AX,RIO.AX,WOW.AX" \
+  --allocations "ANZ.AX:0.2,CBA.AX:0.3,RIO.AX:0.25,WOW.AX:0.25" \
+  --risk-free-rate 0.01 \
+  --output covid_recovery.json \
+  --show-charts
+```
 
-- **`PortfolioModel`**: A Pydantic model that defines the structure and validation rules for all inputs.
-- **Validators**:
-  - `@field_validator`: Ensures individual fields are correct (e.g., no duplicate tickers, allocation weights sum to 1).
-  - `@model_validator`: Performs cross-field validation (e.g., start date is before end date, allocation for a ticker is within its specified constraints).
-  - This rigorous validation prevents errors during the optimization process.
+### 5. Generate Charts from Existing Results
 
-### c. Optimization Models (`core/optimization/`)
+```bash
+# From main CLI
+python main.py --charts-from-json financial_portfolio.json
 
-- **`mean_variance.py`**:
-  - Implements the classic Markowitz model.
-  - **`optimize_max_sharpe`**: Finds the portfolio weights that maximize the Sharpe ratio.
-  - **`generate_efficient_frontier`**: Calculates a series of optimal portfolios for a range of target returns to plot the efficient frontier. It now generates 100 portfolios and ensures the max Sharpe portfolio is included.
+# Using standalone chart generator for specific charts
+python chart_generator.py --input mixed_sector.json --chart-type frontier
+python chart_generator.py --input diversified_hrp.json --chart-type all
+```
 
-- **`black_litterman.py`**:
-  - Calculates market-implied prior returns based on a benchmark (e.g., an equally weighted portfolio).
-  - **`apply_investor_views`**: Adjusts these prior returns based on the user's subjective views, creating a blended set of posterior returns.
-  - Uses the posterior returns as the input for a Mean-Variance optimization, resulting in a more stable and customized portfolio.
+## 🎛️ Command Line Arguments
 
-- **`hrp.py`**:
-  - Does not require a covariance matrix inversion, making it robust to noisy or collinear data.
-  - **Process**:
-    1.  **Tree Clustering**: Groups assets based on their correlation.
-    2.  **Quasi-Diagonalization**: Reorders the covariance matrix based on the clusters.
-    3.  **Recursive Bisection**: Distributes weights top-down based on the inverse of the variance within each cluster.
+### Required Arguments
+- `--tickers`: Comma-separated stock tickers (e.g., "AAPL,GOOGL,MSFT")
+- `--start-date`: Analysis start date (YYYY-MM-DD format)
+- `--end-date`: Analysis end date (YYYY-MM-DD format)
 
-### d. Utility Functions (`core/utils.py`)
+### Optional Arguments
+- `--data`: CSV file path (default: merged_stock_prices.csv)
+- `--method`: Optimization method (mean_variance|black_litterman|hrp, default: mean_variance)
+- `--allocations`: Current portfolio weights (TICKER:WEIGHT,...)
+- `--constraints`: Weight constraints (TICKER:MIN:MAX,...)
+- `--risk-free-rate`: Annual risk-free rate (default: 0.02)
+- `--views`: Investor views for Black-Litterman (TICKER:RETURN:CONFIDENCE,...)
+- `--output`: JSON output file path
+- `--show-charts`: Generate and display charts
+- `--charts-from-json`: Generate charts from existing JSON results
 
-- **`calculate_portfolio_metrics`**: A central function to compute expected return, volatility, and Sharpe ratio for any given set of weights.
-- **`calculate_sortino_ratio`**: Calculates the Sortino ratio, which is a modification of the Sharpe ratio that only penalizes for downside volatility (returns below the risk-free rate), providing a more realistic measure of risk for many investors. The implementation has been corrected to properly use the `daily_risk_free` rate.
+## 📊 Optimization Methods Deep Dive
 
-## 7. Dependencies
+### 1. Mean-Variance Optimization
+- **Objective:** Maximize Sharpe ratio or minimize volatility
+- **Output:** Efficient frontier with 100+ portfolios, optimal weights
+- **Best for:** Traditional portfolio optimization with clear risk-return tradeoffs
 
-- **pandas**: For data manipulation and analysis.
-- **numpy**: For numerical operations.
-- **pydantic**: For data validation and settings management.
-- **PyPortfolioOpt (pypfopt)**: The core library providing the financial modeling algorithms.
+### 2. Black-Litterman Model
+- **Objective:** Incorporate market views with personal insights
+- **Features:** Market-implied returns, investor views integration, posterior return estimates
+- **Output:** Adjusted efficient frontier, view impact analysis
+- **Best for:** Investors with specific market opinions or forecasts
+
+### 3. Hierarchical Risk Parity (HRP)
+- **Objective:** Risk-based allocation using asset clustering
+- **Features:** No covariance matrix inversion, robust to estimation errors
+- **Output:** Cluster-based weights, hierarchical structure analysis  
+- **Best for:** Risk parity strategies, avoiding estimation errors
+
+## 📈 Chart Types and Features
+
+### Efficient Frontier Chart
+- **Envelope visualization** with 100+ portfolio points
+- **Smooth curve fitting** for proper frontier display
+- **Color-coded Sharpe ratios** for performance visualization
+- **Special portfolio highlighting** (max Sharpe, min volatility)
+- **Current portfolio positioning** for comparison
+
+### Portfolio Allocation Charts
+- **Side-by-side pie charts** comparing current vs optimal weights
+- **Professional color schemes** with clear percentage labels
+- **Automatic legend generation** for easy interpretation
+
+### Correlation Matrix Heatmap
+- **Triangular heatmap design** to avoid redundancy
+- **Color-coded correlation values** with numerical labels
+- **Professional styling** using seaborn visualization
+
+### Risk-Return Metrics
+- **Bar chart comparisons** of key performance metrics
+- **Expected return, volatility, Sharpe and Sortino ratios**
+- **Side-by-side portfolio analysis** with numerical labels
+
+## 🎨 Advanced Chart Features
+
+### Method-Specific Visualizations
+- **Black-Litterman:** Prior vs posterior returns analysis
+- **HRP:** Hierarchical clustering dendrogram (future enhancement)
+- **Mean-Variance:** Traditional efficient frontier with optimal points
+
+### Chart Customization
+- **High-resolution output** (300 DPI PNG files)
+- **Professional styling** with consistent color schemes
+- **Interactive display** with zoom and pan capabilities
+- **Automatic chart saving** with organized directory structure
+
+## 📁 Output Files
+
+### JSON Results Structure
+```json
+{
+  "provided_portfolio": {
+    "weights": {...},
+    "metrics": {...}
+  },
+  "optimal_portfolio": {
+    "weights": {...}, 
+    "metrics": {...}
+  },
+  "efficient_frontier": [...],
+  "correlation_matrix": {...},
+  "method": "OPTIMIZATION_METHOD"
+}
+```
+
+### Chart Files
+- `efficient_frontier.png` - Efficient frontier visualization
+- `portfolio_weights.png` - Portfolio allocation comparison
+- `correlation_matrix.png` - Asset correlation heatmap
+- `risk_return_metrics.png` - Performance metrics comparison
+
+## 🧮 Example Workflows
+
+### Complete Analysis Workflow (Big 4 Banks)
+```bash
+# 1. Run comprehensive optimization with all features
+python main.py \
+  --data merged_stock_prices.csv \
+  --method mean_variance \
+  --start-date 2022-01-01 \
+  --end-date 2024-12-31 \
+  --tickers "ANZ.AX,CBA.AX,MQG.AX,NAB.AX,WOW.AX" \
+  --allocations "ANZ.AX:0.2,CBA.AX:0.25,MQG.AX:0.2,NAB.AX:0.2,WOW.AX:0.15" \
+  --constraints "WOW.AX:0.1:0.25,MQG.AX:0.1:0.3" \
+  --risk-free-rate 0.04 \
+  --output asx_portfolio.json \
+  --show-charts
+
+# 2. Generate specific chart types for presentation
+python chart_generator.py \
+  --input asx_portfolio.json \
+  --chart-type frontier \
+  --output-dir presentation_charts
+```
+
+### Black-Litterman with Market Views (Resource vs Banking)
+```bash
+python main.py \
+  --data merged_stock_prices.csv \
+  --method black_litterman \
+  --start-date 2023-06-01 \
+  --end-date 2024-12-31 \
+  --tickers "CBA.AX,RIO.AX,MQG.AX" \
+  --allocations "CBA.AX:0.4,RIO.AX:0.35,MQG.AX:0.25" \
+  --views "CBA.AX:0.10:0.8,RIO.AX:0.18:0.6,MQG.AX:0.12:0.7" \
+  --risk-free-rate 0.045 \
+  --output sector_rotation.json \
+  --show-charts
+```
+
+### Risk Parity Analysis (All Sectors)
+```bash
+python main.py \
+  --data merged_stock_prices.csv \
+  --method hrp \
+  --start-date 2021-01-01 \
+  --end-date 2024-06-30 \
+  --tickers "ANZ.AX,CBA.AX,MQG.AX,NAB.AX,RIO.AX,WOW.AX" \
+  --allocations "ANZ.AX:0.16,CBA.AX:0.17,MQG.AX:0.17,NAB.AX:0.16,RIO.AX:0.17,WOW.AX:0.17" \
+  --output full_diversification.json \
+  --show-charts
+```
+
+## 📦 Dependencies
+
+### Core Libraries
+- **pandas** - Data manipulation and analysis
+- **numpy** - Numerical computing operations
+- **PyPortfolioOpt** - Portfolio optimization algorithms
+- **pydantic** - Data validation and settings management
+
+### Visualization Libraries  
+- **matplotlib** - Core plotting functionality
+- **seaborn** - Statistical data visualization
+
+### Development Libraries
+- **pytest** - Testing framework
+- **pytest-mock** - Mocking for tests
+- **pytest-cov** - Coverage reporting
+
+## 🔧 Technical Notes
+
+### Performance Optimization
+- **Efficient frontier generation:** 100+ portfolios for smooth curves
+- **Duplicate portfolio removal:** Automatic cleanup for clean visualizations
+- **Memory-efficient processing:** Optimized for typical portfolio sizes (5-50 assets)
+
+### Error Handling
+- **Graceful degradation:** Charts will skip if visualization packages missing
+- **Validation checks:** Comprehensive input validation before processing
+- **Fallback mechanisms:** Alternative strategies when optimization fails
+
+### Platform Compatibility
+- **Cross-platform:** Works on Windows, macOS, and Linux
+- **Headless support:** Chart generation works without GUI (saves files only)
+- **Virtual environment friendly:** Clean dependency management
+
+## 📚 Additional Resources
+
+- **CHARTS_GUIDE.md** - Comprehensive visualization documentation
+- **Requirements.txt** - Complete dependency specifications
+- **Example data files** - Sample stock price data for testing
+
+For detailed chart usage instructions, see [CHARTS_GUIDE.md](CHARTS_GUIDE.md).
+
+---
+
+**Portfolio Optimization CLI** - Professional portfolio analysis with advanced visualization capabilities.

@@ -2,3 +2,10 @@ pandas
 numpy
 pydantic
 PyPortfolioOpt
+matplotlib
+seaborn
+scipy
+scikit-learn
+pytest
+pytest-mock
+pytest-cov

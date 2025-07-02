@@ -26,10 +26,6 @@ def calculate_returns_and_covariance(price_data: pd.DataFrame) -> Tuple[pd.Serie
     """Calculate expected returns and covariance matrix."""
     from pypfopt import expected_returns, risk_models
     
-def calculate_returns_and_covariance(price_data: pd.DataFrame) -> Tuple[pd.Series, pd.DataFrame]:
-    """Calculate expected returns and covariance matrix."""
-    from pypfopt import expected_returns, risk_models
-    
     # Calculate expected returns (annualized)
     mu = expected_returns.mean_historical_return(price_data)
     
