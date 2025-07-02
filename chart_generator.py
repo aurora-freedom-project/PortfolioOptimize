@@ -17,7 +17,7 @@ def main():
     parser.add_argument('--output-dir', '-o', type=str, default='charts',
                         help='Output directory for chart files (default: charts)')
     parser.add_argument('--chart-type', '-t', type=str, 
-                        choices=['all', 'frontier', 'weights', 'correlation', 'metrics'],
+                        choices=['all', 'frontier', 'weights', 'correlation', 'metrics', 'method-specific'],
                         default='all',
                         help='Type of chart to generate (default: all)')
     
@@ -60,6 +60,16 @@ def main():
         elif args.chart_type == 'metrics':
             print("📊 Generating Risk-Return Metrics chart...")
             visualizer.plot_risk_return_metrics(results, str(output_dir / "risk_return_metrics.png"))
+        elif args.chart_type == 'method-specific':
+            method = results.get('method', 'Unknown')
+            if method == 'BLACK_LITTERMAN':
+                print("🎯 Generating Black-Litterman Analysis chart...")
+                visualizer.plot_black_litterman_analysis(results, str(output_dir / "black_litterman_analysis.png"))
+            elif method == 'HIERARCHICAL_RISK_PARITY':
+                print("🌳 Generating HRP Analysis chart...")
+                visualizer.plot_hrp_analysis(results, str(output_dir / "hrp_analysis.png"))
+            else:
+                print(f"No method-specific charts available for {method}")
         
         print("✅ Chart generation completed successfully!")
         
