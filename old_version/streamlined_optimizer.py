@@ -19,8 +19,10 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from pydantic import BaseModel, field_validator, ValidationError, model_validator
+from datetime import datetime
 
-from pypfopt import EfficientFrontier, expected_returns, risk_models
+from pypfopt import EfficientFrontier, expected_returns, risk_models, CLA
 from pypfopt.black_litterman import BlackLittermanModel
 
 logging.basicConfig(level=logging.INFO)
@@ -33,6 +35,110 @@ class Config:
     market_cap_file: str = "market_caps.csv"
     risk_free_rate: float = 0.0383
     tau: float = 0.05
+
+
+class WeightConstraint(BaseModel):
+    min: float = 0.0
+    max: float = 1.0
+
+
+class PortfolioData(BaseModel):
+    tickers: List[str]
+    allocations: Optional[Dict[str, float]] = None
+    constraints: Optional[Dict[str, WeightConstraint]] = None
+    investor_views: Optional[Dict[str, Dict[str, float]]] = None
+    start_date: str
+    end_date: str
+    risk_free_rate: float = 0.02
+    
+    @field_validator('risk_free_rate', mode='before')
+    @classmethod
+    def convert_risk_free_rate(cls, v):
+        return float(v)
+    
+    @model_validator(mode='after')
+    def validate_date_ranges(self):
+        start = datetime.strptime(self.start_date, '%Y-%m-%d')
+        end = datetime.strptime(self.end_date, '%Y-%m-%d')
+        years_diff = (end - start).days / 365.25
+        
+        # Mean-Variance: min 3 years
+        if years_diff < 3:
+            raise ValueError(f"Date range must be at least 3 years for Mean-Variance, got {years_diff:.1f} years")
+        
+        # Black-Litterman: min 5 years if investor_views provided
+        if self.investor_views and years_diff < 5:
+            raise ValueError(f"Date range must be at least 5 years for Black-Litterman, got {years_diff:.1f} years")
+        
+        return self
+    
+    def model_post_init(self, __context) -> None:
+        self._process_allocations()
+    
+    def _process_allocations(self):
+        if self.allocations is None:
+            # Case 2: No allocation - equal distribution
+            self._handle_no_allocation()
+        elif len(self.allocations) < len(self.tickers):
+            # Case 1: Partial allocation - distribute remaining
+            self._handle_partial_allocation()
+        else:
+            # Case 3: Full allocation - validate sum = 100%
+            self._handle_full_allocation()
+    
+    def _handle_no_allocation(self):
+        equal_weight = 1.0 / len(self.tickers)
+        if self.constraints:
+            for ticker in self.tickers:
+                if ticker in self.constraints:
+                    constraint = self.constraints[ticker]
+                    if not (constraint.min <= equal_weight <= constraint.max):
+                        raise ValueError(f"Equal allocation {equal_weight*100:.1f}% violates constraint for {ticker} [{constraint.min*100:.1f}%, {constraint.max*100:.1f}%]")
+        self.allocations = {ticker: equal_weight for ticker in self.tickers}
+    
+    def _handle_partial_allocation(self):
+        # Validate existing allocations
+        if self.constraints:
+            for ticker, allocation in self.allocations.items():
+                if ticker in self.constraints:
+                    constraint = self.constraints[ticker]
+                    if not (constraint.min <= allocation <= constraint.max):
+                        raise ValueError(f"{ticker} allocation {allocation*100:.1f}% not in range [{constraint.min*100:.1f}%, {constraint.max*100:.1f}%]")
+        
+        # Check total doesn't exceed 100%
+        total_allocated = sum(self.allocations.values())
+        if total_allocated > 1.0:
+            raise ValueError(f"Total allocation {total_allocated*100:.2f}% exceeds 100%")
+        
+        # Distribute remaining equally
+        remaining = 1.0 - total_allocated
+        unallocated_tickers = [t for t in self.tickers if t not in self.allocations]
+        
+        if unallocated_tickers:
+            equal_share = remaining / len(unallocated_tickers)
+            if self.constraints:
+                for ticker in unallocated_tickers:
+                    if ticker in self.constraints:
+                        constraint = self.constraints[ticker]
+                        if not (constraint.min <= equal_share <= constraint.max):
+                            raise ValueError(f"Remaining allocation {equal_share*100:.1f}% for {ticker} violates constraint [{constraint.min*100:.1f}%, {constraint.max*100:.1f}%]")
+            
+            for ticker in unallocated_tickers:
+                self.allocations[ticker] = equal_share
+    
+    def _handle_full_allocation(self):
+        # Validate each allocation against constraints
+        if self.constraints:
+            for ticker, allocation in self.allocations.items():
+                if ticker in self.constraints:
+                    constraint = self.constraints[ticker]
+                    if not (constraint.min <= allocation <= constraint.max):
+                        raise ValueError(f"{ticker} allocation {allocation*100:.1f}% not in range [{constraint.min*100:.1f}%, {constraint.max*100:.1f}%]")
+        
+        # Validate sum = 100%
+        total = sum(self.allocations.values())
+        if abs(total - 1.0) > 1e-6:
+            raise ValueError(f"Allocation sum must be 100%, got {total*100:.2f}%")
 
 
 class MarketCapLoader:
@@ -52,9 +158,10 @@ class MarketCapLoader:
 
 
 class ChartGenerator:
-    def __init__(self, output_dir: str = "charts"):
+    def __init__(self, output_dir: str = "charts", prefix: str = ""):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
+        self.prefix = prefix
     
     def create_efficient_frontier_chart(self, frontier_data: List[Dict]) -> str:
         """Efficient frontier from portfolio data"""
@@ -105,7 +212,8 @@ class ChartGenerator:
             template='plotly_white'
         )
         
-        file_path = self.output_dir / "efficient_frontier.html"
+        filename = f"{self.prefix}efficient_frontier.html" if self.prefix else "efficient_frontier.html"
+        file_path = self.output_dir / filename
         fig.write_html(str(file_path))
         return str(file_path)
     
@@ -137,7 +245,8 @@ class ChartGenerator:
         
         fig.update_layout(title="Mean-Variance: Provided vs Optimal Allocation")
         
-        file_path = self.output_dir / "mv_comparison.html"
+        filename = f"{self.prefix}mv_comparison.html" if self.prefix else "mv_comparison.html"
+        file_path = self.output_dir / filename
         fig.write_html(str(file_path))
         return str(file_path)
     
@@ -196,7 +305,8 @@ class ChartGenerator:
         
         fig.update_layout(title='Black-Litterman Analysis')
         
-        file_path = self.output_dir / "bl_comparison.html"
+        filename = f"{self.prefix}bl_comparison.html" if self.prefix else "bl_comparison.html"
+        file_path = self.output_dir / filename
         fig.write_html(str(file_path))
         return str(file_path)
     
@@ -204,19 +314,25 @@ class ChartGenerator:
 
 
 class StreamlinedOptimizer:
-    def __init__(self, config: Config):
+    def __init__(self, config: Config, chart_prefix: str = ""):
         self.config = config
         self.market_cap_loader = MarketCapLoader(config.market_cap_file)
-        self.chart_generator = ChartGenerator()
+        self.chart_generator = ChartGenerator(prefix=chart_prefix)
     
     def optimize_portfolio(self, portfolio_data: Dict) -> Dict[str, Any]:
         """Main optimization function"""
+        # Validate with pydantic
+        try:
+            validated_data = PortfolioData(**portfolio_data)
+        except ValidationError as e:
+            raise ValueError(str(e))
+        
         # Load price data
         price_data = pd.read_csv(self.config.csv_file, parse_dates=['date'], index_col='date')
         
-        tickers = portfolio_data["tickers"]
-        start_date = pd.to_datetime(portfolio_data["start_date"])
-        end_date = pd.to_datetime(portfolio_data["end_date"])
+        tickers = validated_data.tickers
+        start_date = pd.to_datetime(validated_data.start_date)
+        end_date = pd.to_datetime(validated_data.end_date)
         
         # Filter data
         price_data = price_data[tickers]
@@ -226,13 +342,18 @@ class StreamlinedOptimizer:
         result = {"status": "success", "charts": {}}
         
         # Mean-Variance Optimization
-        mv_result = self._optimize_mean_variance(price_data, portfolio_data)
-        result["mean_variance"] = mv_result
+        try:
+            mv_result = self._optimize_mean_variance(price_data, validated_data)
+            result["mean_variance"] = mv_result
+        except Exception as e:
+            if "constraint" in str(e).lower():
+                raise ValueError("Constraint is too tight. Please adjust the settings")
+            raise
         
         # Create MV pie charts if provided weights exist
-        if portfolio_data.get("allocations"):
+        if validated_data.allocations:
             chart_file = self.chart_generator.create_mv_pie_charts(
-                portfolio_data["allocations"], 
+                validated_data.allocations, 
                 mv_result["optimal_weights"]
             )
             result["charts"]["mv_comparison"] = chart_file
@@ -245,8 +366,8 @@ class StreamlinedOptimizer:
             result["charts"]["efficient_frontier"] = chart_file
         
         # Black-Litterman Optimization
-        if portfolio_data.get("investor_views"):
-            bl_result = self._optimize_black_litterman(price_data, portfolio_data)
+        if validated_data.investor_views:
+            bl_result = self._optimize_black_litterman(price_data, validated_data)
             result["black_litterman"] = bl_result
             
             # BL comparison chart with optimal pie chart
@@ -257,13 +378,20 @@ class StreamlinedOptimizer:
         
         return result
     
-    def _optimize_mean_variance(self, price_data: pd.DataFrame, portfolio_data: Dict) -> Dict:
+    def _optimize_mean_variance(self, price_data: pd.DataFrame, portfolio_data: PortfolioData) -> Dict:
         """Mean-Variance optimization"""
         mu = expected_returns.mean_historical_return(price_data)
         S = risk_models.CovarianceShrinkage(price_data).ledoit_wolf()
         
-        ef = EfficientFrontier(mu, S)
-        ef.max_sharpe(risk_free_rate=self.config.risk_free_rate)
+        # Setup constraints if provided
+        weight_bounds = (0, 1)
+        if portfolio_data.constraints:
+            weight_bounds = [(portfolio_data.constraints.get(ticker, WeightConstraint()).min, 
+                            portfolio_data.constraints.get(ticker, WeightConstraint()).max) 
+                           for ticker in mu.index]
+        
+        ef = EfficientFrontier(mu, S, weight_bounds=weight_bounds)
+        ef.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
         optimal_weights = ef.clean_weights()
         
         # Generate efficient frontier with exactly 100 portfolios
@@ -271,70 +399,96 @@ class StreamlinedOptimizer:
         
         # Get optimal portfolio info
         ef_optimal = EfficientFrontier(mu, S)
-        ef_optimal.max_sharpe(risk_free_rate=self.config.risk_free_rate)
-        optimal_perf = ef_optimal.portfolio_performance(verbose=False, risk_free_rate=self.config.risk_free_rate)
+        ef_optimal.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
+        optimal_perf = ef_optimal.portfolio_performance(verbose=False, risk_free_rate=portfolio_data.risk_free_rate)
         
-        # Generate 100 portfolios using risk targets
-        min_vol_ef = EfficientFrontier(mu, S)
+        # Generate efficient frontier ensuring optimal portfolio is included
+        # Step 1: Get min volatility point
+        min_vol_ef = EfficientFrontier(mu, S, weight_bounds=weight_bounds)
         min_vol_ef.min_volatility()
         min_vol_perf = min_vol_ef.portfolio_performance(verbose=False)
+        min_return = min_vol_perf[0]
         
-        # Use volatility range
-        min_vol = min_vol_perf[1]
-        max_vol = min_vol * 3
-        target_vols = np.linspace(min_vol, max_vol, 100)
+        # Step 2: Get max feasible return (use optimal return as upper bound)
+        optimal_return = optimal_perf[0]
+        max_return = max(optimal_return, mu.max() * 0.95)  # Ensure we cover optimal
         
-        for target_vol in target_vols:
+        # Step 3: Generate target returns including optimal
+        target_returns = np.linspace(min_return, max_return, 99)  # 99 points
+        target_returns = np.append(target_returns, optimal_return)  # Add optimal explicitly
+        target_returns = np.unique(target_returns)  # Remove duplicates
+        target_returns = np.sort(target_returns)  # Sort ascending
+        
+        successful_portfolios = 0
+        
+        for target_return in target_returns:
             try:
-                ef_temp = EfficientFrontier(mu, S)
-                ef_temp.efficient_risk(target_vol)
-                weights = ef_temp.clean_weights()
-                perf = ef_temp.portfolio_performance(verbose=False, risk_free_rate=self.config.risk_free_rate)
+                ef_temp = EfficientFrontier(mu, S, weight_bounds=weight_bounds)
                 
-                # Don't mark as optimal here - we'll do it later
-                is_optimal = False
+                # Check if this is the optimal return
+                is_optimal_point = abs(target_return - optimal_return) < 1e-6
+                
+                if is_optimal_point:
+                    # Use max_sharpe for optimal point to ensure consistency
+                    ef_temp.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
+                    weights = ef_temp.clean_weights()
+                    perf = ef_temp.portfolio_performance(verbose=False, risk_free_rate=portfolio_data.risk_free_rate)
+                else:
+                    # Use efficient_return for other points
+                    ef_temp.efficient_return(target_return)
+                    weights = ef_temp.clean_weights()
+                    perf = ef_temp.portfolio_performance(verbose=False, risk_free_rate=portfolio_data.risk_free_rate)
+                
+                successful_portfolios += 1
                 
                 frontier_portfolios.append({
                     "expected_return": perf[0],
                     "standard_deviation": perf[1],
                     "sharpe_ratio": perf[2],
                     "weights": weights,
-                    "is_optimal": is_optimal
+                    "is_optimal": bool(is_optimal_point)
                 })
             except:
                 continue
         
-        # Always ensure we have the exact optimal portfolio
-        if frontier_portfolios:
-            # Find the portfolio with highest Sharpe ratio and replace it with exact optimal
-            max_sharpe_idx = max(range(len(frontier_portfolios)), 
-                               key=lambda i: frontier_portfolios[i]["sharpe_ratio"])
-            frontier_portfolios[max_sharpe_idx] = {
-                "expected_return": optimal_perf[0],
-                "standard_deviation": optimal_perf[1],
-                "sharpe_ratio": optimal_perf[2],
-                "weights": optimal_weights,
-                "is_optimal": True
-            }
+        # Check if we have enough successful portfolios
+        if successful_portfolios < 5:
+            raise ValueError("Constraint is too tight. Please adjust the settings")
         
-        # Ensure exactly 100 portfolios
-        frontier_portfolios = frontier_portfolios[:100]
+        # Remove duplicates but preserve optimal marking
+        unique_portfolios = []
+        seen_combinations = set()
+        
+        for portfolio in frontier_portfolios:
+            key = (round(portfolio["expected_return"], 4), round(portfolio["standard_deviation"], 4))
+            if key not in seen_combinations:
+                seen_combinations.add(key)
+                unique_portfolios.append(portfolio)
+            elif portfolio["is_optimal"]:  # Always keep optimal even if duplicate
+                # Replace existing with optimal version
+                for i, existing in enumerate(unique_portfolios):
+                    existing_key = (round(existing["expected_return"], 4), round(existing["standard_deviation"], 4))
+                    if existing_key == key:
+                        unique_portfolios[i] = portfolio
+                        break
+        
+        frontier_portfolios = unique_portfolios
         
         # Calculate metrics for provided and optimal portfolios
         provided_portfolio = None
-        if portfolio_data.get("allocations"):
+        if portfolio_data.allocations:
             provided_metrics = self._calculate_portfolio_metrics(
-                portfolio_data["allocations"], mu, S, self.config.risk_free_rate
+                portfolio_data.allocations, mu, S, portfolio_data.risk_free_rate
             )
             provided_portfolio = {
-                "weights": portfolio_data["allocations"],
+                "weights": portfolio_data.allocations,
                 "metrics": provided_metrics
             }
         
         # Use the same performance values from PyPortfolioOpt for consistency
-        ef_perf = EfficientFrontier(mu, S)
-        ef_perf.max_sharpe(risk_free_rate=self.config.risk_free_rate)
-        perf_values = ef_perf.portfolio_performance(verbose=False, risk_free_rate=self.config.risk_free_rate)
+        ef_perf = EfficientFrontier(mu, S, weight_bounds=weight_bounds)
+        ef_perf.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
+        perf_values = ef_perf.portfolio_performance(verbose=False, risk_free_rate=portfolio_data.risk_free_rate)
         
         optimal_portfolio = {
             "weights": optimal_weights,
@@ -342,7 +496,7 @@ class StreamlinedOptimizer:
                 "expected_return": perf_values[0],
                 "standard_deviation": perf_values[1],
                 "sharpe_ratio": perf_values[2],
-                "risk_free_rate": self.config.risk_free_rate
+                "risk_free_rate": portfolio_data.risk_free_rate
             }
         }
         
@@ -359,15 +513,15 @@ class StreamlinedOptimizer:
         
         return result
     
-    def _optimize_black_litterman(self, price_data: pd.DataFrame, portfolio_data: Dict) -> Dict:
+    def _optimize_black_litterman(self, price_data: pd.DataFrame, portfolio_data: PortfolioData) -> Dict:
         """Black-Litterman optimization"""
         mu = expected_returns.mean_historical_return(price_data)
         S = risk_models.sample_cov(price_data)
         
         # Get market caps and calculate market weights
-        market_caps = self.market_cap_loader.get_market_caps(portfolio_data["tickers"])
+        market_caps = self.market_cap_loader.get_market_caps(portfolio_data.tickers)
         total_cap = sum(market_caps.values())
-        market_weights = pd.Series({t: market_caps[t]/total_cap for t in portfolio_data["tickers"]})
+        market_weights = pd.Series({t: market_caps[t]/total_cap for t in portfolio_data.tickers})
         
         # Calculate market-implied returns
         risk_aversion = 3.0
@@ -376,10 +530,11 @@ class StreamlinedOptimizer:
         # Prepare views
         views_dict = {}
         confidences = {}
-        for ticker, view_data in portfolio_data.get("investor_views", {}).items():
-            if isinstance(view_data, dict):
-                views_dict[ticker] = view_data["expected_return"]
-                confidences[ticker] = view_data.get("confidence", 0.5)
+        if portfolio_data.investor_views:
+            for ticker, view_data in portfolio_data.investor_views.items():
+                if isinstance(view_data, dict):
+                    views_dict[ticker] = view_data["expected_return"]
+                    confidences[ticker] = view_data.get("confidence", 0.5)
         
         # Create Q and P matrices for Black-Litterman
         if views_dict:
@@ -407,22 +562,22 @@ class StreamlinedOptimizer:
         
         # Optimize
         ef = EfficientFrontier(mu_bl, S_bl)
-        ef.max_sharpe(risk_free_rate=self.config.risk_free_rate)
+        ef.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
         optimal_weights = ef.clean_weights()
         
         # Calculate metrics for provided and optimal portfolios
         provided_portfolio = None
-        if portfolio_data.get("allocations"):
+        if portfolio_data.allocations:
             provided_metrics = self._calculate_portfolio_metrics(
-                portfolio_data["allocations"], mu_bl, S_bl, self.config.risk_free_rate
+                portfolio_data.allocations, mu_bl, S_bl, portfolio_data.risk_free_rate
             )
             provided_portfolio = {
-                "weights": portfolio_data["allocations"],
+                "weights": portfolio_data.allocations,
                 "metrics": provided_metrics
             }
         
         optimal_metrics = self._calculate_portfolio_metrics(
-            optimal_weights, mu_bl, S_bl, self.config.risk_free_rate
+            optimal_weights, mu_bl, S_bl, portfolio_data.risk_free_rate
         )
         optimal_portfolio = {
             "weights": optimal_weights,
@@ -489,9 +644,9 @@ class StreamlinedOptimizer:
 
 
 
-def create_optimizer(config: Optional[Config] = None) -> StreamlinedOptimizer:
+def create_optimizer(config: Optional[Config] = None, chart_prefix: str = "") -> StreamlinedOptimizer:
     """Factory function"""
-    return StreamlinedOptimizer(config or Config())
+    return StreamlinedOptimizer(config or Config(), chart_prefix)
 
 
 def main_example():
