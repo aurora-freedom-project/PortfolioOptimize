@@ -242,9 +242,28 @@ def run_mean_variance_optimization(
     tickers: List[str],
     allocations: Dict[str, float],
     constraints: Dict[str, Tuple[float, float]],
-    risk_free_rate: float = 0.02
+    risk_free_rate: float = 0.02,
+    validate_inputs: bool = True
 ) -> Dict[str, Any]:
     """Run Mean-Variance optimization analysis."""
+    
+    # Input validation
+    if validate_inputs:
+        from core.validation_simple import ValidationError
+        try:
+            # Check if constraints allow for feasible portfolio
+            total_min = sum(min_weight for min_weight, _ in constraints.values())
+            total_max = sum(max_weight for _, max_weight in constraints.values())
+            
+            if total_min > 1.0001:  # Small tolerance
+                raise ValidationError("Constraint is too tight. Minimum weights sum to more than 100%")
+            
+            if total_max < 0.9999:  # Small tolerance
+                raise ValidationError("Constraint is too tight. Maximum weights sum to less than 100%")
+            
+        except Exception as e:
+            raise ValueError(f"Optimization validation failed: {e}")
+    
     # Calculate expected returns and covariance
     from core.data import calculate_returns_and_covariance
     mu, S = calculate_returns_and_covariance(price_data)

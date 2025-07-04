@@ -1,0 +1,14 @@
+{
+  "data": "merged_stock_prices.csv",
+  "tickers": "ANZ.AX,CBA.AX,NAB.AX,WBC.AX,RIO.AX,BHP.AX",
+  "method": "mean_variance",
+  "start_date": "2021-01-01",
+  "end_date": "2024-01-01",
+  "risk_free_rate": 0.0435,
+  "allocations": "",
+  "constraints": "",
+  "output": "rba_rate_portfolio.json",
+  "show_charts": true,
+  "data_source": "file",
+  "report_comment": "Using current RBA cash rate of 4.35% as risk-free rate"
+}

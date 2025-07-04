@@ -1,8 +1,7 @@
 # core/models.py
 from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import Dict, List, Optional, Tuple, Union, Any
-from datetime import datetime, timedelta
-import re
+from datetime import datetime
 
 class OptimizationMethod:
     """Available optimization methods."""

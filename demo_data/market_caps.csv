@@ -1,0 +1,11 @@
+ticker,company_name,market_cap,sector,industry,exchange,country,currency,employees,founded,headquarters
+ANZ.AX,Australia and New Zealand Banking Group,85,Banking,Banking,ASX,Australia,AUD,40000,1835,"Melbourne, VIC"
+CBA.AX,Commonwealth Bank of Australia,180,Banking,Banking,ASX,Australia,AUD,52000,1911,"Sydney, NSW"
+MQG.AX,Macquarie Group,85,Financial Services,Investment Banking,ASX,Australia,AUD,18000,1969,"Sydney, NSW"
+NAB.AX,National Australia Bank,125,Banking,Banking,ASX,Australia,AUD,35000,1858,"Melbourne, VIC"
+RIO.AX,Rio Tinto,160,Mining,Iron Ore Mining,ASX,Australia,AUD,47000,1873,"London, UK"
+WOW.AX,Woolworths Group,40,Consumer Staples,Supermarkets,ASX,Australia,AUD,210000,1924,"Sydney, NSW"
+BHP.AX,BHP Group,200,Mining,Iron Ore Mining,ASX,Australia,AUD,80000,1885,"Melbourne, VIC"
+CSL.AX,CSL Limited,150,Healthcare,Biotechnology,ASX,Australia,AUD,27000,1916,"Melbourne, VIC"
+TLS.AX,Telstra Corporation,35,Telecommunications,Telecommunications,ASX,Australia,AUD,28000,1975,"Melbourne, VIC"
+WBC.AX,Westpac Banking Corporation,70,Banking,Banking,ASX,Australia,AUD,40000,1817,"Sydney, NSW"

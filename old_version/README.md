@@ -14,15 +14,16 @@ python run_example.py
 
 ### 3. View Results
 - **Charts**: Open HTML files in `charts/` folder in your browser
-- **Data**: Check `optimization_results.json` for raw data
+- **Data**: Check `streamlined_results.json` for raw data
 - **Success**: You should see "✅ Optimization completed successfully!"
 
 ## Files
 
-- `streamlined_optimizer.py` - Main optimizer
-- `run_example.py` - Example script
-- `market_caps.csv` - Market cap data (provided)
-- `merged_stock_prices.csv` - Your price data
+- `streamlined_optimizer.py` - Main optimizer (691 lines)
+- `run_example.py` - Comprehensive test suite (210 lines)
+- `migrate_from_legacy.py` - Migration tool for upgrading (805 lines)
+- `data/market_caps.csv` - Market cap data (provided)
+- `data/merged_stock_prices.csv` - Stock price data
 
 ## Generated Charts
 
@@ -36,9 +37,6 @@ python run_example.py
 3. **Black-Litterman Comparison** (`charts/bl_comparison.html`)
    - Prior vs Posterior vs Views bar chart
 
-4. **HRP Correlation** (`charts/hrp_correlation.html`)
-   - Correlation heatmap for clustering
-
 ## Usage
 
 ```python
@@ -50,7 +48,7 @@ portfolio_data = {
     "investor_views": {
         "CBA.AX": {"expected_return": 0.10, "confidence": 0.8}
     },
-    "start_date": "2022-01-01",
+    "start_date": "2019-01-01",
     "end_date": "2024-12-31"
 }
 
@@ -71,18 +69,32 @@ result = optimizer.optimize_portfolio(portfolio_data)
     "posterior_returns": {...},
     "view_details": {...}
   },
-  "hrp": {
-    "optimal_weights": {...},
-    "correlation_matrix": {...}
-  },
   "charts": {...}
 }
 ```
 
 ## Requirements
 
-- Python 3.7+
-- PyPortfolioOpt
-- pandas
-- numpy
-- plotly
+- Python 3.8+
+- PyPortfolioOpt>=1.5.4
+- pandas>=1.3.0
+- numpy>=1.21.0
+- plotly>=5.0.0
+- pydantic>=2.0.0
+
+## Test Coverage
+
+All functionality is tested with 14 comprehensive test scenarios:
+- ✅ 6 Happy path scenarios (valid inputs)
+- ✅ 8 Error handling scenarios (validation & constraints)
+
+Run tests with: `python run_example.py`
+
+## Date Range Requirements
+
+- **Mean-Variance**: Minimum 3 years of data
+- **Black-Litterman**: Minimum 5 years of data (when using investor views)
+
+## Migration Tool
+
+Use `migrate_from_legacy.py` to migrate from older portfolio optimizer versions.

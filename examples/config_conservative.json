@@ -1,0 +1,13 @@
+{
+  "data": "merged_stock_prices.csv",
+  "tickers": "ANZ.AX,CBA.AX,NAB.AX,WBC.AX",
+  "method": "mean_variance",
+  "start_date": "2021-01-01",
+  "end_date": "2024-01-01",
+  "risk_free_rate": 0.01,
+  "allocations": "ANZ.AX:0.25,CBA.AX:0.25,NAB.AX:0.25,WBC.AX:0.25",
+  "constraints": "ANZ.AX:0.20:0.30,CBA.AX:0.20:0.30,NAB.AX:0.20:0.30,WBC.AX:0.20:0.30",
+  "output": "conservative_portfolio.json",
+  "show_charts": false,
+  "data_source": "file"
+}

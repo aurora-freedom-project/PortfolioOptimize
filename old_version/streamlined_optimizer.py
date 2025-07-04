@@ -31,8 +31,8 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Config:
-    csv_file: str = "merged_stock_prices.csv"
-    market_cap_file: str = "market_caps.csv"
+    csv_file: str = "data/merged_stock_prices.csv"
+    market_cap_file: str = "data/market_caps.csv"
     risk_free_rate: float = 0.0383
     tau: float = 0.05
 
@@ -667,7 +667,7 @@ def main_example():
             "CBA.AX": {"expected_return": 0.10, "confidence": 0.8},
             "RIO.AX": {"expected_return": 0.06, "confidence": 0.6}
         },
-        "start_date": "2022-01-01",
+        "start_date": "2019-01-01",
         "end_date": "2024-12-31"
     }
     

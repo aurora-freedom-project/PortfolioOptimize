@@ -2,15 +2,28 @@
 import pandas as pd
 import numpy as np
 from typing import Dict, List, Tuple, Union
-from datetime import datetime
 
 def load_stock_data(file_path: str) -> pd.DataFrame:
     """Load stock price data from CSV."""
+    # Try to load with date as index first
+    try:
+        data = pd.read_csv(file_path, index_col=0, parse_dates=True)
+        if isinstance(data.index, pd.DatetimeIndex):
+            return data
+    except:
+        pass
+    
+    # Fallback to original format with date column
     data = pd.read_csv(file_path)
     
     # Ensure date column exists and is properly formatted
     if 'date' not in data.columns:
-        raise ValueError("CSV file must have a 'date' column")
+        # Check if we have a date-like column
+        date_cols = [col for col in data.columns if 'date' in col.lower() or col.lower() in ['time', 'timestamp']]
+        if date_cols:
+            data.rename(columns={date_cols[0]: 'date'}, inplace=True)
+        else:
+            raise ValueError("CSV file must have a 'date' column or date index")
     
     # Convert date to datetime and set as index
     data['date'] = pd.to_datetime(data['date'])
