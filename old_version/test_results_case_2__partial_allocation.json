@@ -16,6 +16,7 @@
         "expected_return": 0.15713426668702155,
         "standard_deviation": 0.23112101904111257,
         "sharpe_ratio": 0.5933439860034005,
+        "sortino_ratio": 0.6372338750288651,
         "weights": {
           "ANZ.AX": 0.05833,
           "CBA.AX": 0.49131,
@@ -28,6 +29,7 @@
         "expected_return": 0.15738503793657388,
         "standard_deviation": 0.23112141879933767,
         "sharpe_ratio": 0.594427979242604,
+        "sortino_ratio": 0.6375876978277486,
         "weights": {
           "ANZ.AX": 0.05534,
           "CBA.AX": 0.49358,
@@ -40,6 +42,7 @@
         "expected_return": 0.15763580918612616,
         "standard_deviation": 0.23112261806986442,
         "sharpe_ratio": 0.5955099087036182,
+        "sortino_ratio": 0.6390492035511174,
         "weights": {
           "ANZ.AX": 0.05234,
           "CBA.AX": 0.49584,
@@ -52,6 +55,7 @@
         "expected_return": 0.15788658043567846,
         "standard_deviation": 0.23112461684024718,
         "sharpe_ratio": 0.5965897632227786,
+        "sortino_ratio": 0.6393970412036927,
         "weights": {
           "ANZ.AX": 0.04935,
           "CBA.AX": 0.49811,
@@ -64,6 +68,7 @@
         "expected_return": 0.15813735168523077,
         "standard_deviation": 0.23112741508974385,
         "sharpe_ratio": 0.5976675317014807,
+        "sortino_ratio": 0.6408581258572793,
         "weights": {
           "ANZ.AX": 0.04635,
           "CBA.AX": 0.50037,
@@ -76,6 +81,7 @@
         "expected_return": 0.15838812293478308,
         "standard_deviation": 0.23113101278931716,
         "sharpe_ratio": 0.5987432031067506,
+        "sortino_ratio": 0.6423165958314476,
         "weights": {
           "ANZ.AX": 0.04336,
           "CBA.AX": 0.50264,
@@ -88,6 +94,7 @@
         "expected_return": 0.15863889418433536,
         "standard_deviation": 0.23113540990163603,
         "sharpe_ratio": 0.5998167664718086,
+        "sortino_ratio": 0.6432165206822781,
         "weights": {
           "ANZ.AX": 0.04037,
           "CBA.AX": 0.5049,
@@ -100,6 +107,7 @@
         "expected_return": 0.1588896654338877,
         "standard_deviation": 0.2311406063810774,
         "sharpe_ratio": 0.6008882108966297,
+        "sortino_ratio": 0.6441185064760114,
         "weights": {
           "ANZ.AX": 0.03737,
           "CBA.AX": 0.50717,
@@ -112,6 +120,7 @@
         "expected_return": 0.15914043668343994,
         "standard_deviation": 0.23114660217372884,
         "sharpe_ratio": 0.6019575255484939,
+        "sortino_ratio": 0.6450173212681485,
         "weights": {
           "ANZ.AX": 0.03438,
           "CBA.AX": 0.50944,
@@ -124,6 +133,7 @@
         "expected_return": 0.15939120793299227,
         "standard_deviation": 0.2311533972173912,
         "sharpe_ratio": 0.6030246996625364,
+        "sortino_ratio": 0.6464723784219301,
         "weights": {
           "ANZ.AX": 0.03139,
           "CBA.AX": 0.5117,
@@ -136,6 +146,7 @@
         "expected_return": 0.15964197918254458,
         "standard_deviation": 0.2311609914415818,
         "sharpe_ratio": 0.6040897225422847,
+        "sortino_ratio": 0.6468103446920748,
         "weights": {
           "ANZ.AX": 0.02839,
           "CBA.AX": 0.51397,
@@ -148,6 +159,7 @@
         "expected_return": 0.15989275043209686,
         "standard_deviation": 0.23116938476753826,
         "sharpe_ratio": 0.6051525835601963,
+        "sortino_ratio": 0.6482639406761215,
         "weights": {
           "ANZ.AX": 0.0254,
           "CBA.AX": 0.51623,
@@ -160,6 +172,7 @@
         "expected_return": 0.16014352168164914,
         "standard_deviation": 0.2311785771082223,
         "sharpe_ratio": 0.6062132721581869,
+        "sortino_ratio": 0.6491575059149463,
         "weights": {
           "ANZ.AX": 0.02241,
           "CBA.AX": 0.5185,
@@ -172,6 +185,7 @@
         "expected_return": 0.16039429293120147,
         "standard_deviation": 0.2311885683683245,
         "sharpe_ratio": 0.6072717778481521,
+        "sortino_ratio": 0.6494868342201906,
         "weights": {
           "ANZ.AX": 0.01941,
           "CBA.AX": 0.52076,
@@ -184,6 +198,7 @@
         "expected_return": 0.16064506418075375,
         "standard_deviation": 0.2311993584442693,
         "sharpe_ratio": 0.6083280902124835,
+        "sortino_ratio": 0.6498118649791563,
         "weights": {
           "ANZ.AX": 0.01642,
           "CBA.AX": 0.52303,
@@ -196,6 +211,7 @@
         "expected_return": 0.16089583543030603,
         "standard_deviation": 0.2312109472242199,
         "sharpe_ratio": 0.6093821989045806,
+        "sortino_ratio": 0.650133326973955,
         "weights": {
           "ANZ.AX": 0.01343,
           "CBA.AX": 0.52529,
@@ -208,6 +224,7 @@
         "expected_return": 0.16114660667985833,
         "standard_deviation": 0.23122333458808467,
         "sharpe_ratio": 0.6104340936493521,
+        "sortino_ratio": 0.6521513476208173,
         "weights": {
           "ANZ.AX": 0.01043,
           "CBA.AX": 0.52756,
@@ -220,6 +237,7 @@
         "expected_return": 0.16139737792941067,
         "standard_deviation": 0.23123652040752293,
         "sharpe_ratio": 0.6114837642437148,
+        "sortino_ratio": 0.6524685723655655,
         "weights": {
           "ANZ.AX": 0.00744,
           "CBA.AX": 0.52982,
@@ -232,6 +250,7 @@
         "expected_return": 0.16164814917896295,
         "standard_deviation": 0.23125050454595175,
         "sharpe_ratio": 0.6125312005570828,
+        "sortino_ratio": 0.6533505623782767,
         "weights": {
           "ANZ.AX": 0.00445,
           "CBA.AX": 0.53209,
@@ -244,6 +263,7 @@
         "expected_return": 0.16189892042851528,
         "standard_deviation": 0.23126528685855288,
         "sharpe_ratio": 0.6135763925318541,
+        "sortino_ratio": 0.6536655023389197,
         "weights": {
           "ANZ.AX": 0.00145,
           "CBA.AX": 0.53435,
@@ -256,6 +276,7 @@
         "expected_return": 0.1621496916780675,
         "standard_deviation": 0.23128116248311179,
         "sharpe_ratio": 0.614618545461727,
+        "sortino_ratio": 0.6545870952184465,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.53825,
@@ -268,6 +289,7 @@
         "expected_return": 0.1624004629276198,
         "standard_deviation": 0.23129980201317688,
         "sharpe_ratio": 0.6156531985250356,
+        "sortino_ratio": 0.6561144645005833,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.54368,
@@ -280,6 +302,7 @@
         "expected_return": 0.16265123417717214,
         "standard_deviation": 0.23132146707637793,
         "sharpe_ratio": 0.6166796189740205,
+        "sortino_ratio": 0.6570674040118244,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.54912,
@@ -292,6 +315,7 @@
         "expected_return": 0.16290200542672442,
         "standard_deviation": 0.23134615682271123,
         "sharpe_ratio": 0.6176977711206818,
+        "sortino_ratio": 0.658013276982406,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.55455,
@@ -304,6 +328,7 @@
         "expected_return": 0.1631527766762767,
         "standard_deviation": 0.23137387028389111,
         "sharpe_ratio": 0.6187076202711703,
+        "sortino_ratio": 0.6595265185484095,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.55998,
@@ -316,6 +341,7 @@
         "expected_return": 0.163403547925829,
         "standard_deviation": 0.23140460637353996,
         "sharpe_ratio": 0.6197091327315364,
+        "sortino_ratio": 0.6604612752856396,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.56542,
@@ -328,6 +354,7 @@
         "expected_return": 0.1636543191753813,
         "standard_deviation": 0.23143836388740044,
         "sharpe_ratio": 0.6207022758131496,
+        "sortino_ratio": 0.6613888855775434,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.57085,
@@ -340,6 +367,7 @@
         "expected_return": 0.1639050904249336,
         "standard_deviation": 0.2314751415035712,
         "sharpe_ratio": 0.6216870178377812,
+        "sortino_ratio": 0.6617358872929223,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.57628,
@@ -352,6 +380,7 @@
         "expected_return": 0.1641558616744859,
         "standard_deviation": 0.23151493778276494,
         "sharpe_ratio": 0.6226633281423517,
+        "sortino_ratio": 0.6632263772601803,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.58172,
@@ -364,6 +393,7 @@
         "expected_return": 0.1644066329240382,
         "standard_deviation": 0.2315577511685896,
         "sharpe_ratio": 0.623631177083338,
+        "sortino_ratio": 0.6635587346245339,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.58715,
@@ -376,6 +406,7 @@
         "expected_return": 0.16465740417359048,
         "standard_deviation": 0.23160357998785142,
         "sharpe_ratio": 0.6245905360408435,
+        "sortino_ratio": 0.664459397089586,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.59258,
@@ -388,6 +419,7 @@
         "expected_return": 0.1649081754231428,
         "standard_deviation": 0.23165242245088097,
         "sharpe_ratio": 0.6255413774223267,
+        "sortino_ratio": 0.6659313192139343,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.59802,
@@ -400,6 +432,7 @@
         "expected_return": 0.16515894667269512,
         "standard_deviation": 0.2317042766518812,
         "sharpe_ratio": 0.6264836746659876,
+        "sortino_ratio": 0.666242143930464,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.60345,
@@ -412,6 +445,7 @@
         "expected_return": 0.16540971792224737,
         "standard_deviation": 0.2317591405692972,
         "sharpe_ratio": 0.627417402243814,
+        "sortino_ratio": 0.6682797686964085,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.60888,
@@ -424,6 +458,7 @@
         "expected_return": 0.16566048917179968,
         "standard_deviation": 0.23181701206620864,
         "sharpe_ratio": 0.628342535664285,
+        "sortino_ratio": 0.6691548911979406,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.61431,
@@ -436,6 +471,7 @@
         "expected_return": 0.165911260421352,
         "standard_deviation": 0.23187788889074332,
         "sharpe_ratio": 0.6292590514747303,
+        "sortino_ratio": 0.6706030753094937,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.61975,
@@ -448,6 +484,7 @@
         "expected_return": 0.16616203167090426,
         "standard_deviation": 0.23194176867651237,
         "sharpe_ratio": 0.630166927263349,
+        "sortino_ratio": 0.6708869952930716,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.62518,
@@ -460,6 +497,7 @@
         "expected_return": 0.16641280292045657,
         "standard_deviation": 0.23200864894306716,
         "sharpe_ratio": 0.6310661416608868,
+        "sortino_ratio": 0.6717414250771294,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.63061,
@@ -472,6 +510,7 @@
         "expected_return": 0.16666357417000888,
         "standard_deviation": 0.23207852709637672,
         "sharpe_ratio": 0.6319566743419694,
+        "sortino_ratio": 0.6725894812829065,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.63605,
@@ -484,6 +523,7 @@
         "expected_return": 0.16691434541956118,
         "standard_deviation": 0.2321514004293269,
         "sharpe_ratio": 0.6328385060260959,
+        "sortino_ratio": 0.6740123144303184,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.64148,
@@ -496,6 +536,7 @@
         "expected_return": 0.16716511666911346,
         "standard_deviation": 0.2322272661222394,
         "sharpe_ratio": 0.6337116184782925,
+        "sortino_ratio": 0.674847515926046,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.64691,
@@ -508,6 +549,7 @@
         "expected_return": 0.16741588791866577,
         "standard_deviation": 0.23230612124341193,
         "sharpe_ratio": 0.6345759945094275,
+        "sortino_ratio": 0.6750915297553041,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.65235,
@@ -520,6 +562,7 @@
         "expected_return": 0.16766665916821805,
         "standard_deviation": 0.23238796274967843,
         "sharpe_ratio": 0.6354316179761871,
+        "sortino_ratio": 0.6747405800529064,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.65778,
@@ -532,6 +575,7 @@
         "expected_return": 0.16791743041777035,
         "standard_deviation": 0.23247278748698905,
         "sharpe_ratio": 0.636278473780717,
+        "sortino_ratio": 0.6749648955695098,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.66321,
@@ -544,6 +588,7 @@
         "expected_return": 0.16816820166732266,
         "standard_deviation": 0.23256059219101013,
         "sharpe_ratio": 0.6371165478699287,
+        "sortino_ratio": 0.6757685820987042,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.66865,
@@ -556,6 +601,7 @@
         "expected_return": 0.16841897291687494,
         "standard_deviation": 0.2326513734877436,
         "sharpe_ratio": 0.6379458272344731,
+        "sortino_ratio": 0.6765656169482468,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.67408,
@@ -568,6 +614,7 @@
         "expected_return": 0.16866974416642722,
         "standard_deviation": 0.23274512789416563,
         "sharpe_ratio": 0.6387662999073848,
+        "sortino_ratio": 0.6773545931604288,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.67951,
@@ -580,6 +627,7 @@
         "expected_return": 0.16892051541597958,
         "standard_deviation": 0.23284185181888412,
         "sharpe_ratio": 0.6395779549623979,
+        "sortino_ratio": 0.6787272753704554,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.68495,
@@ -592,6 +640,7 @@
         "expected_return": 0.16917128666553183,
         "standard_deviation": 0.23294154156281477,
         "sharpe_ratio": 0.6403807825119354,
+        "sortino_ratio": 0.6800920777020885,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.69038,
@@ -604,6 +653,7 @@
         "expected_return": 0.16942205791508416,
         "standard_deviation": 0.2330441933198758,
         "sharpe_ratio": 0.6411747737047792,
+        "sortino_ratio": 0.6796805699501361,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.69581,
@@ -616,6 +666,7 @@
         "expected_return": 0.16967282916463644,
         "standard_deviation": 0.23314980317770037,
         "sharpe_ratio": 0.6419599207234155,
+        "sortino_ratio": 0.6804409220565186,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.70125,
@@ -628,6 +679,7 @@
         "expected_return": 0.16992360041418877,
         "standard_deviation": 0.23325836711836717,
         "sharpe_ratio": 0.642736216781068,
+        "sortino_ratio": 0.6823771875636558,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.70668,
@@ -640,6 +692,7 @@
         "expected_return": 0.17017437166374105,
         "standard_deviation": 0.23336988101914766,
         "sharpe_ratio": 0.6435036561184152,
+        "sortino_ratio": 0.6837154379250171,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.71211,
@@ -652,6 +705,7 @@
         "expected_return": 0.17042514291329336,
         "standard_deviation": 0.23348434065327173,
         "sharpe_ratio": 0.6442622339999979,
+        "sortino_ratio": 0.6844564967546876,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.71755,
@@ -664,6 +718,7 @@
         "expected_return": 0.17067591416284564,
         "standard_deviation": 0.23360174169070883,
         "sharpe_ratio": 0.645011946710321,
+        "sortino_ratio": 0.683408333828775,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.72298,
@@ -676,6 +731,7 @@
         "expected_return": 0.17092668541239794,
         "standard_deviation": 0.23372207969896638,
         "sharpe_ratio": 0.6457527915496527,
+        "sortino_ratio": 0.6847260128382479,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.72841,
@@ -688,6 +744,7 @@
         "expected_return": 0.1711774566619502,
         "standard_deviation": 0.23384535014390392,
         "sharpe_ratio": 0.6464847668295244,
+        "sortino_ratio": 0.6848473607021637,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.73385,
@@ -700,6 +757,7 @@
         "expected_return": 0.17142822791150256,
         "standard_deviation": 0.23397154839056347,
         "sharpe_ratio": 0.6472078718679367,
+        "sortino_ratio": 0.6861523726411253,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.73928,
@@ -712,6 +770,7 @@
         "expected_return": 0.17167899916105478,
         "standard_deviation": 0.23410066970401472,
         "sharpe_ratio": 0.6479221069842739,
+        "sortino_ratio": 0.6868537555464533,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.74471,
@@ -724,6 +783,7 @@
         "expected_return": 0.17192977041060714,
         "standard_deviation": 0.23423270925021633,
         "sharpe_ratio": 0.6486274734939345,
+        "sortino_ratio": 0.6875489480104215,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.75015,
@@ -736,6 +796,7 @@
         "expected_return": 0.17218054166015942,
         "standard_deviation": 0.2343676620968905,
         "sharpe_ratio": 0.6493239737026779,
+        "sortino_ratio": 0.6882353462308726,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.75558,
@@ -748,6 +809,7 @@
         "expected_return": 0.1724313129097117,
         "standard_deviation": 0.23450552321441345,
         "sharpe_ratio": 0.6500116109006971,
+        "sortino_ratio": 0.6889151266337245,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.76101,
@@ -760,6 +822,7 @@
         "expected_return": 0.17268208415926403,
         "standard_deviation": 0.23464628747671906,
         "sharpe_ratio": 0.6506903893564169,
+        "sortino_ratio": 0.6895867557931984,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.76645,
@@ -772,6 +835,7 @@
         "expected_return": 0.1729328554088163,
         "standard_deviation": 0.2347899496622163,
         "sharpe_ratio": 0.6513603143100257,
+        "sortino_ratio": 0.6902505597053215,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.77188,
@@ -784,6 +848,7 @@
         "expected_return": 0.17318362665836862,
         "standard_deviation": 0.2349365044547202,
         "sharpe_ratio": 0.6520213919667475,
+        "sortino_ratio": 0.6909068067871394,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.77731,
@@ -796,6 +861,7 @@
         "expected_return": 0.17343439790792087,
         "standard_deviation": 0.2350859464443954,
         "sharpe_ratio": 0.6526736294898535,
+        "sortino_ratio": 0.6915566028359109,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.78275,
@@ -808,6 +874,7 @@
         "expected_return": 0.17368516915747323,
         "standard_deviation": 0.23523827012871282,
         "sharpe_ratio": 0.6533170349934259,
+        "sortino_ratio": 0.6915965588283012,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.78818,
@@ -820,6 +887,7 @@
         "expected_return": 0.17393594040702548,
         "standard_deviation": 0.23539495953693174,
         "sharpe_ratio": 0.653947479206215,
+        "sortino_ratio": 0.6934085016456244,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.7937,
@@ -832,6 +900,7 @@
         "expected_return": 0.17418671165657781,
         "standard_deviation": 0.23555892343191598,
         "sharpe_ratio": 0.6545568701460919,
+        "sortino_ratio": 0.6945970669059044,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.79924,
@@ -844,6 +913,7 @@
         "expected_return": 0.17443748290613004,
         "standard_deviation": 0.23573022333835336,
         "sharpe_ratio": 0.6551450243376706,
+        "sortino_ratio": 0.6957677952654787,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.80478,
@@ -856,6 +926,7 @@
         "expected_return": 0.1746882541556824,
         "standard_deviation": 0.23590884327560488,
         "sharpe_ratio": 0.655711977591976,
+        "sortino_ratio": 0.6969196328360342,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.81031,
@@ -868,6 +939,7 @@
         "expected_return": 0.1749390254052347,
         "standard_deviation": 0.2360947666295359,
         "sharpe_ratio": 0.6562577714751071,
+        "sortino_ratio": 0.6956467144542668,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.81585,
@@ -880,6 +952,7 @@
         "expected_return": 0.175189796654787,
         "standard_deviation": 0.2362879761600521,
         "sharpe_ratio": 0.6567824532453891,
+        "sortino_ratio": 0.6979664723633221,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.82139,
@@ -892,6 +965,7 @@
         "expected_return": 0.1754405679043393,
         "standard_deviation": 0.2364884540088773,
         "sharpe_ratio": 0.657286075786619,
+        "sortino_ratio": 0.6990623016694337,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.82693,
@@ -904,6 +978,7 @@
         "expected_return": 0.17569133915389157,
         "standard_deviation": 0.23669618170756707,
         "sharpe_ratio": 0.6577686975375243,
+        "sortino_ratio": 0.6989343719772937,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.83247,
@@ -916,6 +991,7 @@
         "expected_return": 0.17594211040344387,
         "standard_deviation": 0.23691114018574885,
         "sharpe_ratio": 0.6582303824175526,
+        "sortino_ratio": 0.6987843321520505,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.83801,
@@ -928,6 +1004,7 @@
         "expected_return": 0.17619288165299618,
         "standard_deviation": 0.23713330977958091,
         "sharpe_ratio": 0.6586711997491196,
+        "sortino_ratio": 0.6992161591938949,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.84355,
@@ -940,6 +1017,7 @@
         "expected_return": 0.17644365290254846,
         "standard_deviation": 0.2373626702404214,
         "sharpe_ratio": 0.6590912241764421,
+        "sortino_ratio": 0.6990226429895161,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.84909,
@@ -952,6 +1030,7 @@
         "expected_return": 0.17669442415210077,
         "standard_deviation": 0.237599200743699,
         "sharpe_ratio": 0.6594905355810892,
+        "sortino_ratio": 0.7000164010772335,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.85462,
@@ -964,6 +1043,7 @@
         "expected_return": 0.17694519540165307,
         "standard_deviation": 0.2378428798979766,
         "sharpe_ratio": 0.6598692189943848,
+        "sortino_ratio": 0.699780501958249,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.86016,
@@ -976,6 +1056,7 @@
         "expected_return": 0.17719596665120538,
         "standard_deviation": 0.23809368575419904,
         "sharpe_ratio": 0.6602273645068014,
+        "sortino_ratio": 0.7013389886063127,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.8657,
@@ -988,6 +1069,7 @@
         "expected_return": 0.17744673790075768,
         "standard_deviation": 0.23835159581511603,
         "sharpe_ratio": 0.6605650671744845,
+        "sortino_ratio": 0.7016671970302546,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.87124,
@@ -1000,6 +1082,7 @@
         "expected_return": 0.17769750915030996,
         "standard_deviation": 0.23861658704487163,
         "sharpe_ratio": 0.66088242692305,
+        "sortino_ratio": 0.7013693833526617,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.87678,
@@ -1012,6 +1095,7 @@
         "expected_return": 0.17794828039986227,
         "standard_deviation": 0.23888863587875075,
         "sharpe_ratio": 0.6611795484488002,
+        "sortino_ratio": 0.7022617794410719,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.88232,
@@ -1024,6 +1108,7 @@
         "expected_return": 0.17819905164941457,
         "standard_deviation": 0.23916771823307412,
         "sharpe_ratio": 0.6614565411175023,
+        "sortino_ratio": 0.7031333819026698,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.88786,
@@ -1036,6 +1121,7 @@
         "expected_return": 0.17844982289896683,
         "standard_deviation": 0.23945380951523218,
         "sharpe_ratio": 0.6617135188608787,
+        "sortino_ratio": 0.7027730558262779,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.89339,
@@ -1048,6 +1134,7 @@
         "expected_return": 0.1787005941485191,
         "standard_deviation": 0.23974688463384933,
         "sharpe_ratio": 0.6619506000709572,
+        "sortino_ratio": 0.7029980871528891,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.89893,
@@ -1060,6 +1147,7 @@
         "expected_return": 0.17895136539807147,
         "standard_deviation": 0.24004691800906894,
         "sharpe_ratio": 0.6621679074924275,
+        "sortino_ratio": 0.7050191371902834,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.90447,
@@ -1072,6 +1160,7 @@
         "expected_return": 0.17920213664762372,
         "standard_deviation": 0.24035388358294982,
         "sharpe_ratio": 0.6623655681131552,
+        "sortino_ratio": 0.7039934620994478,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.91001,
@@ -1084,6 +1173,7 @@
         "expected_return": 0.17945290789717605,
         "standard_deviation": 0.2406677548299668,
         "sharpe_ratio": 0.6625437130530032,
+        "sortino_ratio": 0.7041580141425825,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.91555,
@@ -1096,6 +1186,7 @@
         "expected_return": 0.17970367914672833,
         "standard_deviation": 0.24098850476760295,
         "sharpe_ratio": 0.6627024774511068,
+        "sortino_ratio": 0.703089393638224,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.92109,
@@ -1108,6 +1199,7 @@
         "expected_return": 0.1799544503962807,
         "standard_deviation": 0.24131610596702863,
         "sharpe_ratio": 0.6628420003517523,
+        "sortino_ratio": 0.7026065434298783,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.92663,
@@ -1120,6 +1212,7 @@
         "expected_return": 0.18020522164583297,
         "standard_deviation": 0.2416505305638549,
         "sharpe_ratio": 0.6629624245890061,
+        "sortino_ratio": 0.7045327362732184,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.93217,
@@ -1132,6 +1225,7 @@
         "expected_return": 0.18045599289538525,
         "standard_deviation": 0.24199175026895478,
         "sharpe_ratio": 0.6630638966702421,
+        "sortino_ratio": 0.7052242007868252,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.9377,
@@ -1144,6 +1238,7 @@
         "expected_return": 0.18070676414493753,
         "standard_deviation": 0.24233973637934197,
         "sharpe_ratio": 0.6631465666587101,
+        "sortino_ratio": 0.7058958028542983,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.94324,
@@ -1156,6 +1251,7 @@
         "expected_return": 0.18095753539448983,
         "standard_deviation": 0.2426944597890998,
         "sharpe_ratio": 0.6632105880552902,
+        "sortino_ratio": 0.7035163062811574,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.94878,
@@ -1168,6 +1264,7 @@
         "expected_return": 0.1812083066440421,
         "standard_deviation": 0.24305589100035027,
         "sharpe_ratio": 0.6632561176795744,
+        "sortino_ratio": 0.7041505902881099,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.95432,
@@ -1180,6 +1277,7 @@
         "expected_return": 0.1814590778935944,
         "standard_deviation": 0.2434240001342566,
         "sharpe_ratio": 0.6632833155504151,
+        "sortino_ratio": 0.704765261363558,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.95986,
@@ -1192,6 +1290,7 @@
         "expected_return": 0.18170984914314667,
         "standard_deviation": 0.24379875694204872,
         "sharpe_ratio": 0.6632923447660782,
+        "sortino_ratio": 0.7053603668016084,
         "weights": {
           "ANZ.AX": 0.0,
           "CBA.AX": 0.9654,
@@ -1244,6 +1343,7 @@
         "expected_return": 0.18170984914314667,
         "standard_deviation": 0.24379875694204872,
         "sharpe_ratio": 0.6632923447660782,
+        "sortino_ratio": 0.7053603668016084,
         "risk_free_rate": 0.02
       }
     },
@@ -1258,6 +1358,7 @@
         "expected_return": 0.1318605946370997,
         "standard_deviation": 0.23563885147108868,
         "sharpe_ratio": 0.4747120177286395,
+        "sortino_ratio": 0.5343271530488027,
         "risk_free_rate": 0.02
       }
     }

@@ -16,6 +16,7 @@
         "expected_return": 0.14839809550937347,
         "standard_deviation": 0.2317791750481062,
         "sharpe_ratio": 0.5539673505297628,
+        "sortino_ratio": 0.6033969575056773,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.45197,
@@ -28,6 +29,7 @@
         "expected_return": 0.14873801136277937,
         "standard_deviation": 0.23178195035425112,
         "sharpe_ratio": 0.5554272503360105,
+        "sortino_ratio": 0.6041893805820999,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.45933,
@@ -40,6 +42,7 @@
         "expected_return": 0.14907792721618515,
         "standard_deviation": 0.23179027607330763,
         "sharpe_ratio": 0.5568737800517657,
+        "sortino_ratio": 0.606030422029903,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.4667,
@@ -52,6 +55,7 @@
         "expected_return": 0.14941784306959105,
         "standard_deviation": 0.2318041516072126,
         "sharpe_ratio": 0.5583068386492359,
+        "sortino_ratio": 0.6068001896411626,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.47406,
@@ -64,6 +68,7 @@
         "expected_return": 0.14975775892299692,
         "standard_deviation": 0.23182357595943257,
         "sharpe_ratio": 0.5597263280318978,
+        "sortino_ratio": 0.6070236443342724,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.48142,
@@ -76,6 +81,7 @@
         "expected_return": 0.15009767477640273,
         "standard_deviation": 0.2318485477353217,
         "sharpe_ratio": 0.5611321530679685,
+        "sortino_ratio": 0.60830094978968,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.48879,
@@ -88,6 +94,7 @@
         "expected_return": 0.15043759062980858,
         "standard_deviation": 0.2318790651426223,
         "sharpe_ratio": 0.5625242216220774,
+        "sortino_ratio": 0.6101018033096433,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.49615,
@@ -100,6 +107,7 @@
         "expected_return": 0.15062378802468446,
         "standard_deviation": 0.23190536938212925,
         "sharpe_ratio": 0.5632633188817853,
+        "sortino_ratio": 0.6108067839247214,
         "weights": {
           "ANZ.AX": 0.2,
           "CBA.AX": 0.5,
@@ -152,6 +160,7 @@
         "expected_return": 0.15062378802468446,
         "standard_deviation": 0.23190536938212925,
         "sharpe_ratio": 0.5632633188817853,
+        "sortino_ratio": 0.6108067839247214,
         "risk_free_rate": 0.02
       }
     },
@@ -166,6 +175,7 @@
         "expected_return": 0.13644221022356448,
         "standard_deviation": 0.23414382632496278,
         "sharpe_ratio": 0.4973106148097069,
+        "sortino_ratio": 0.5554395310513901,
         "risk_free_rate": 0.02
       }
     }

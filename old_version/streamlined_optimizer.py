@@ -441,10 +441,14 @@ class StreamlinedOptimizer:
                 
                 successful_portfolios += 1
                 
+                # Calculate Sortino ratio for frontier portfolio
+                sortino_ratio = self._calculate_sortino_ratio(weights, price_data, portfolio_data.risk_free_rate)
+                
                 frontier_portfolios.append({
                     "expected_return": perf[0],
                     "standard_deviation": perf[1],
                     "sharpe_ratio": perf[2],
+                    "sortino_ratio": sortino_ratio,
                     "weights": weights,
                     "is_optimal": bool(is_optimal_point)
                 })
@@ -478,7 +482,7 @@ class StreamlinedOptimizer:
         provided_portfolio = None
         if portfolio_data.allocations:
             provided_metrics = self._calculate_portfolio_metrics(
-                portfolio_data.allocations, mu, S, portfolio_data.risk_free_rate
+                portfolio_data.allocations, mu, S, portfolio_data.risk_free_rate, price_data
             )
             provided_portfolio = {
                 "weights": portfolio_data.allocations,
@@ -490,12 +494,16 @@ class StreamlinedOptimizer:
         ef_perf.max_sharpe(risk_free_rate=portfolio_data.risk_free_rate)
         perf_values = ef_perf.portfolio_performance(verbose=False, risk_free_rate=portfolio_data.risk_free_rate)
         
+        # Calculate Sortino ratio for optimal portfolio
+        optimal_sortino = self._calculate_sortino_ratio(optimal_weights, price_data, portfolio_data.risk_free_rate)
+        
         optimal_portfolio = {
             "weights": optimal_weights,
             "metrics": {
                 "expected_return": perf_values[0],
                 "standard_deviation": perf_values[1],
                 "sharpe_ratio": perf_values[2],
+                "sortino_ratio": optimal_sortino,
                 "risk_free_rate": portfolio_data.risk_free_rate
             }
         }
@@ -569,7 +577,7 @@ class StreamlinedOptimizer:
         provided_portfolio = None
         if portfolio_data.allocations:
             provided_metrics = self._calculate_portfolio_metrics(
-                portfolio_data.allocations, mu_bl, S_bl, portfolio_data.risk_free_rate
+                portfolio_data.allocations, mu_bl, S_bl, portfolio_data.risk_free_rate, price_data
             )
             provided_portfolio = {
                 "weights": portfolio_data.allocations,
@@ -577,7 +585,7 @@ class StreamlinedOptimizer:
             }
         
         optimal_metrics = self._calculate_portfolio_metrics(
-            optimal_weights, mu_bl, S_bl, portfolio_data.risk_free_rate
+            optimal_weights, mu_bl, S_bl, portfolio_data.risk_free_rate, price_data
         )
         optimal_portfolio = {
             "weights": optimal_weights,
@@ -603,14 +611,54 @@ class StreamlinedOptimizer:
         
         return result
     
+    def _calculate_sortino_ratio(
+        self,
+        weights: Dict[str, float],
+        price_data: pd.DataFrame,
+        risk_free_rate: float,
+        benchmark: float = 0.0
+    ) -> float:
+        """Calculate Sortino ratio for a portfolio"""
+        try:
+            # Convert weights to array aligned with price_data columns
+            tickers = list(price_data.columns)
+            weights_array = np.array([weights.get(ticker, 0) for ticker in tickers])
+            
+            # Normalize weights
+            if weights_array.sum() > 0:
+                weights_array = weights_array / weights_array.sum()
+            
+            # Calculate portfolio returns
+            returns = price_data.pct_change().dropna()
+            portfolio_returns = returns @ weights_array
+            
+            # Calculate expected return
+            expected_return = portfolio_returns.mean() * 252  # Annualized
+            
+            # Calculate downside deviation (semideviation)
+            downside_returns = portfolio_returns[portfolio_returns < benchmark]
+            if len(downside_returns) == 0:
+                return float('inf')  # No downside risk
+            
+            semivariance = np.mean(np.square(downside_returns - benchmark)) * 252  # Annualized
+            semi_deviation = np.sqrt(semivariance)
+            
+            # Calculate Sortino ratio
+            sortino_ratio = (expected_return - risk_free_rate) / semi_deviation if semi_deviation > 0 else 0
+            
+            return float(sortino_ratio)
+        except Exception:
+            return 0.0
+    
     def _calculate_portfolio_metrics(
         self,
         weights: Dict[str, float],
         expected_returns: pd.Series,
         cov_matrix: pd.DataFrame,
-        risk_free_rate: float
+        risk_free_rate: float,
+        price_data: pd.DataFrame = None
     ) -> Dict[str, float]:
-        """Calculate portfolio performance metrics"""
+        """Calculate portfolio performance metrics including Sortino ratio"""
         try:
             # Convert weights to array
             tickers = list(expected_returns.index)
@@ -627,10 +675,16 @@ class StreamlinedOptimizer:
             
             sharpe_ratio = (portfolio_return - risk_free_rate) / portfolio_volatility if portfolio_volatility > 0 else 0
             
+            # Calculate Sortino ratio if price data is available
+            sortino_ratio = 0.0
+            if price_data is not None:
+                sortino_ratio = self._calculate_sortino_ratio(weights, price_data, risk_free_rate)
+            
             return {
                 "expected_return": float(portfolio_return),
                 "standard_deviation": float(portfolio_volatility),
                 "sharpe_ratio": float(sharpe_ratio),
+                "sortino_ratio": float(sortino_ratio),
                 "risk_free_rate": float(risk_free_rate)
             }
         except Exception as e:
@@ -638,6 +692,7 @@ class StreamlinedOptimizer:
                 "expected_return": 0.0,
                 "standard_deviation": 0.0,
                 "sharpe_ratio": 0.0,
+                "sortino_ratio": 0.0,
                 "risk_free_rate": float(risk_free_rate)
             }
     
