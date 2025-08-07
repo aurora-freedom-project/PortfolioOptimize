@@ -1,0 +1,26 @@
+# Core libraries
+pandas
+numpy
+pydantic
+PyPortfolioOpt
+matplotlib
+seaborn
+scipy
+scikit-learn
+
+# Data sources and API integration
+requests
+yfinance
+sqlalchemy
+
+# Testing libraries
+pytest
+pytest-mock
+pytest-cov
+
+# Optional dependencies for advanced features
+# fastapi
+# uvicorn
+# aiohttp
+# streamlit
+# plotly

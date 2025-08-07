@@ -1,0 +1,179 @@
+{
+  "description": "Portfolio Optimizer Data Source Configuration",
+  "version": "1.0.0",
+  "yahoo": {
+    "description": "Yahoo Finance - Free real-time and historical data",
+    "free_tier": true,
+    "features": ["stocks", "etfs", "indices", "forex", "crypto"],
+    "rate_limit": "No official limit, but 0.5s recommended",
+    "coverage": "Global markets",
+    "data_quality": "Good",
+    "api_key_required": false
+  },
+  "alphavantage": {
+    "description": "Alpha Vantage - Premium financial data API",
+    "free_tier": "5 calls per minute, 500 calls per day",
+    "premium_tier": "Available with higher limits",
+    "features": ["stocks", "forex", "crypto", "economic_indicators", "technical_indicators"],
+    "rate_limit": "5 calls/minute (free), higher for premium",
+    "coverage": "Global markets",
+    "data_quality": "High",
+    "api_key_required": true,
+    "signup_url": "https://www.alphavantage.co/support/#api-key"
+  },
+  "quandl": {
+    "description": "Quandl - Financial and economic data",
+    "free_tier": "50 calls per day",
+    "premium_tier": "Available with datasets and higher limits",
+    "features": ["stocks", "economic_data", "alternative_data"],
+    "rate_limit": "50 calls/day (free)",
+    "coverage": "Global markets and economic data",
+    "data_quality": "High",
+    "api_key_required": true,
+    "signup_url": "https://www.quandl.com/sign-up-modal?defaultModal=showSignUp"
+  },
+  "fred": {
+    "description": "FRED - Federal Reserve Economic Data",
+    "free_tier": true,
+    "features": ["economic_indicators", "interest_rates", "inflation", "gdp"],
+    "rate_limit": "120 calls/minute",
+    "coverage": "US economic data primarily",
+    "data_quality": "Excellent (official government data)",
+    "api_key_required": true,
+    "signup_url": "https://fred.stlouisfed.org/docs/api/api_key.html"
+  },
+  "crypto": {
+    "description": "CoinGecko - Free cryptocurrency data",
+    "free_tier": true,
+    "features": ["crypto_prices", "market_cap", "volume"],
+    "rate_limit": "10-50 calls/minute depending on plan",
+    "coverage": "All major cryptocurrencies",
+    "data_quality": "Good",
+    "api_key_required": false
+  },
+  "usage_examples": {
+    "file_only": {
+      "command": "python -m shell --data merged_stock_prices.csv --tickers AAPL,GOOGL,MSFT --method mean_variance",
+      "description": "Use local CSV file for offline analysis"
+    },
+    "yahoo_finance": {
+      "command": "python -m shell --data-source yahoo --tickers AAPL,GOOGL,MSFT --method mean_variance --real-time",
+      "description": "Use Yahoo Finance for real-time data (no API key needed)"
+    },
+    "alpha_vantage": {
+      "command": "python -m shell --data-source alphavantage --api-keys '{\"alphavantage\": \"YOUR_API_KEY\"}' --tickers AAPL,GOOGL --method mean_variance",
+      "description": "Use Alpha Vantage with API key for premium data"
+    },
+    "multi_source_fallback": {
+      "command": "python -m shell --data-source alphavantage --fallback-sources yahoo,file --api-keys '{\"alphavantage\": \"YOUR_KEY\"}' --tickers AAPL,GOOGL",
+      "description": "Try Alpha Vantage first, fallback to Yahoo Finance, then local files"
+    },
+    "database_caching": {
+      "command": "python -m shell --data-source yahoo --database-url sqlite:///portfolio.db --update-cache --tickers AAPL,GOOGL,MSFT",
+      "description": "Use database caching for improved performance"
+    },
+    "real_time_streaming": {
+      "command": "python -m shell --stream-prices --tickers AAPL,GOOGL,TSLA --stream-interval 30",
+      "description": "Stream real-time prices every 30 seconds"
+    },
+    "advanced_optimization": {
+      "command": "python -m shell --data-source yahoo --advanced-method risk_parity --tickers AAPL,GOOGL,MSFT,AMZN",
+      "description": "Use advanced optimization methods with real-time data"
+    },
+    "comprehensive_backtest": {
+      "command": "python -m shell --run-backtest --data-source yahoo --database-url sqlite:///portfolio.db --tickers AAPL,GOOGL,MSFT,AMZN",
+      "description": "Run comprehensive backtesting with database storage"
+    }
+  },
+  "recommended_workflows": {
+    "development": {
+      "description": "For development and testing",
+      "data_sources": ["file", "yahoo"],
+      "database": "sqlite:///dev_portfolio.db",
+      "benefits": ["No API keys needed", "Fast setup", "Offline capable"]
+    },
+    "research": {
+      "description": "For academic research and analysis",
+      "data_sources": ["yahoo", "fred", "file"],
+      "database": "sqlite:///research_portfolio.db",
+      "api_keys_needed": ["fred"],
+      "benefits": ["Economic data integration", "Free tier adequate", "Good data quality"]
+    },
+    "professional": {
+      "description": "For professional investment management",
+      "data_sources": ["alphavantage", "yahoo", "database"],
+      "database": "postgresql://user:pass@localhost/portfolio_db",
+      "api_keys_needed": ["alphavantage"],
+      "benefits": ["Premium data quality", "Higher rate limits", "Production ready"]
+    },
+    "hedge_fund": {
+      "description": "For hedge funds and institutional investors",
+      "data_sources": ["alphavantage", "quandl", "fred", "database"],
+      "database": "postgresql://user:pass@prod-db/portfolio_db",
+      "api_keys_needed": ["alphavantage", "quandl", "fred"],
+      "benefits": ["Multiple premium sources", "Alternative data", "Institutional grade"]
+    }
+  },
+  "database_configurations": {
+    "sqlite_development": {
+      "url": "sqlite:///portfolio_dev.db",
+      "description": "File-based database for development",
+      "benefits": ["No setup required", "Portable", "Good for testing"]
+    },
+    "sqlite_production": {
+      "url": "sqlite:///portfolio_prod.db",
+      "description": "File-based database for small production deployments",
+      "benefits": ["Simple deployment", "No external dependencies"]
+    },
+    "postgresql": {
+      "url": "postgresql://username:password@localhost:5432/portfolio_db",
+      "description": "Production PostgreSQL database",
+      "benefits": ["Scalable", "ACID compliance", "Advanced features"],
+      "setup_required": true
+    },
+    "mysql": {
+      "url": "mysql+pymysql://username:password@localhost:3306/portfolio_db",
+      "description": "Production MySQL database", 
+      "benefits": ["Widely supported", "Good performance", "Familiar to many"],
+      "setup_required": true
+    }
+  },
+  "troubleshooting": {
+    "no_data_found": {
+      "problem": "No data found for tickers",
+      "solutions": [
+        "Check ticker symbols are correct",
+        "Try different data source",
+        "Check date range is valid",
+        "Verify API key if using premium source"
+      ]
+    },
+    "api_rate_limit": {
+      "problem": "API rate limit exceeded",
+      "solutions": [
+        "Use database caching to reduce API calls",
+        "Increase rate_limit parameter",
+        "Use fallback data sources",
+        "Upgrade to premium API tier"
+      ]
+    },
+    "missing_api_key": {
+      "problem": "API key required but not provided",
+      "solutions": [
+        "Sign up for API key at provider website",
+        "Use --api-keys parameter with JSON format",
+        "Set environment variables",
+        "Use free data sources like Yahoo Finance"
+      ]
+    },
+    "database_connection": {
+      "problem": "Cannot connect to database",
+      "solutions": [
+        "Check database URL format",
+        "Ensure database server is running",
+        "Verify credentials and permissions",
+        "Use SQLite for simpler setup"
+      ]
+    }
+  }
+}
