@@ -1,0 +1,14 @@
+{
+  "data": "merged_stock_prices.csv",
+  "tickers": "ANZ.AX,CBA.AX,RIO.AX,BHP.AX,CSL.AX,WOW.AX",
+  "method": "mean_variance",
+  "start_date": "2021-01-01",
+  "end_date": "2024-01-01",
+  "risk_free_rate": 0.05,
+  "allocations": "",
+  "constraints": "ANZ.AX:0.05:0.25,CBA.AX:0.05:0.25,RIO.AX:0.10:0.30,BHP.AX:0.10:0.30,CSL.AX:0.05:0.20,WOW.AX:0.05:0.20",
+  "output": "aggressive_portfolio.json",
+  "show_charts": true,
+  "data_source": "file",
+  "advanced_method": "risk_parity"
+}

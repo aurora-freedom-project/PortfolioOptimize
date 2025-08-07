@@ -1,0 +1,183 @@
+{
+  "status": "success",
+  "charts": {
+    "mv_comparison": "charts/case_4__valid_constraints_mv_comparison.html",
+    "efficient_frontier": "charts/case_4__valid_constraints_efficient_frontier.html"
+  },
+  "mean_variance": {
+    "optimal_weights": {
+      "ANZ.AX": 0.2,
+      "CBA.AX": 0.5,
+      "MQG.AX": 0.24016,
+      "NAB.AX": 0.05984
+    },
+    "efficient_frontier": [
+      {
+        "expected_return": 0.14839809550937347,
+        "standard_deviation": 0.2317791750481062,
+        "sharpe_ratio": 0.5539673505297628,
+        "sortino_ratio": 0.6033969575056773,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.45197,
+          "MQG.AX": 0.24108,
+          "NAB.AX": 0.10695
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.14873801136277937,
+        "standard_deviation": 0.23178195035425112,
+        "sharpe_ratio": 0.5554272503360105,
+        "sortino_ratio": 0.6041893805820999,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.45933,
+          "MQG.AX": 0.23971,
+          "NAB.AX": 0.10096
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.14907792721618515,
+        "standard_deviation": 0.23179027607330763,
+        "sharpe_ratio": 0.5568737800517657,
+        "sortino_ratio": 0.606030422029903,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.4667,
+          "MQG.AX": 0.23834,
+          "NAB.AX": 0.09497
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.14941784306959105,
+        "standard_deviation": 0.2318041516072126,
+        "sharpe_ratio": 0.5583068386492359,
+        "sortino_ratio": 0.6068001896411626,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.47406,
+          "MQG.AX": 0.23696,
+          "NAB.AX": 0.08898
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.14975775892299692,
+        "standard_deviation": 0.23182357595943257,
+        "sharpe_ratio": 0.5597263280318978,
+        "sortino_ratio": 0.6070236443342724,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.48142,
+          "MQG.AX": 0.23559,
+          "NAB.AX": 0.08298
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.15009767477640273,
+        "standard_deviation": 0.2318485477353217,
+        "sharpe_ratio": 0.5611321530679685,
+        "sortino_ratio": 0.60830094978968,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.48879,
+          "MQG.AX": 0.23422,
+          "NAB.AX": 0.07699
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.15043759062980858,
+        "standard_deviation": 0.2318790651426223,
+        "sharpe_ratio": 0.5625242216220774,
+        "sortino_ratio": 0.6101018033096433,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.49615,
+          "MQG.AX": 0.23285,
+          "NAB.AX": 0.071
+        },
+        "is_optimal": false
+      },
+      {
+        "expected_return": 0.15062378802468446,
+        "standard_deviation": 0.23190536938212925,
+        "sharpe_ratio": 0.5632633188817853,
+        "sortino_ratio": 0.6108067839247214,
+        "weights": {
+          "ANZ.AX": 0.2,
+          "CBA.AX": 0.5,
+          "MQG.AX": 0.24016,
+          "NAB.AX": 0.05984
+        },
+        "is_optimal": true
+      }
+    ],
+    "expected_returns": {
+      "ANZ.AX": 0.08825037573659578,
+      "CBA.AX": 0.18327651406920697,
+      "MQG.AX": 0.13800019502538063,
+      "NAB.AX": 0.13692052138373767
+    },
+    "covariance_matrix": {
+      "ANZ.AX": {
+        "ANZ.AX": 0.07015694264429226,
+        "CBA.AX": 0.05160730834494815,
+        "MQG.AX": 0.04880981250220025,
+        "NAB.AX": 0.05907917986991792
+      },
+      "CBA.AX": {
+        "ANZ.AX": 0.05160730834494815,
+        "CBA.AX": 0.06065805928969691,
+        "MQG.AX": 0.04203547382677114,
+        "NAB.AX": 0.050682913343951516
+      },
+      "MQG.AX": {
+        "ANZ.AX": 0.04880981250220025,
+        "CBA.AX": 0.04203547382677114,
+        "MQG.AX": 0.08066018562347592,
+        "NAB.AX": 0.04754722757726138
+      },
+      "NAB.AX": {
+        "ANZ.AX": 0.05907917986991792,
+        "CBA.AX": 0.050682913343951516,
+        "MQG.AX": 0.04754722757726138,
+        "NAB.AX": 0.06643986384209484
+      }
+    },
+    "optimal_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.2,
+        "CBA.AX": 0.5,
+        "MQG.AX": 0.24016,
+        "NAB.AX": 0.05984
+      },
+      "metrics": {
+        "expected_return": 0.15062378802468446,
+        "standard_deviation": 0.23190536938212925,
+        "sharpe_ratio": 0.5632633188817853,
+        "sortino_ratio": 0.6108067839247214,
+        "risk_free_rate": 0.02
+      }
+    },
+    "provided_portfolio": {
+      "weights": {
+        "ANZ.AX": 0.3,
+        "CBA.AX": 0.3,
+        "MQG.AX": 0.2,
+        "NAB.AX": 0.2
+      },
+      "metrics": {
+        "expected_return": 0.13644221022356448,
+        "standard_deviation": 0.23414382632496278,
+        "sharpe_ratio": 0.4973106148097069,
+        "sortino_ratio": 0.5554395310513901,
+        "risk_free_rate": 0.02
+      }
+    }
+  }
+}
